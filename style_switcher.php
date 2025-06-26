@@ -22,8 +22,8 @@ $theme = $_SESSION['theme'] ?? 'light';
 </head>
 <body class="<?= $theme?>">
     <form method="post" style="margin-bottom: 1em;">
-        <label><input type="radio" name="theme" value="light" <?=$theme == 'light' ? 'checked' : '' ?>>Világos</label>
-        <label><input type="radio" name="theme" value="dark" <?=$theme == 'dark' ? 'checked' : '' ?>>Sötét</label>
+        <label><input type="radio" name="theme" value="light" <?= $theme == 'light' ? 'checked' : '' ?>> Világos</label>
+        <label><input type="radio" name="theme" value="dark" <?= $theme == 'dark' ? 'checked' : '' ?>> Sötét</label>
         <button type="submit">Stílusváltás</button>
     </form>
 </body>
