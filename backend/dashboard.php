@@ -3,9 +3,9 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-include 'style_switcher.php';
+include '../style_switcher.php';
 if (!isset($_SESSION['uid'])) {
-    header('Location:login.php');
+    header('Location:./index.php');
     exit();
 }
 

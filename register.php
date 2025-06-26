@@ -1,6 +1,6 @@
 <?php
 
-require 'config.php';
+require 'backend/config.php';
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = htmlspecialchars($_POST['name']);

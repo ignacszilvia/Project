@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'config.php';
+require 'backend/config.php';
 if ($_SESSION['rights'] != 103) {
     exit('Nincs jogosultság!');
 }
@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt = $conn->prepare("INSERT INTO users (name, mail, pass, rights) VALUES (?, ?, ?, ?)");
     $stmt->bind_param("sssi", $name, $mail, $pass, $rights);
     $stmt->execute();
-    header('Location: admin.php');
+    header('Location: backend/admin.php');
 }
 
 ?>
