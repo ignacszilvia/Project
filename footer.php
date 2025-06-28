@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
 </head>
 <body>
-    <div class="footer">
-        <footer>Ignác Szilvia @ 2025</footer>
-    </div>
+    
+        <footer>
+            <div class="footer">
+                <p>Ignác Szilvia @ 2025</p>
+            </div>
+        </footer>
+    
 </body>
 </html>

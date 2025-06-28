@@ -42,7 +42,7 @@ while ($row = $result->fetch_assoc()) {
         </tr>";
 }
 
-$newUser = lang('Új felhasználó felvétele');
+$newUser = lang('Új felhasználó hozzáadása');
 $rearrangeIds = lang('ID-k újrasorszámozása');
 $back = lang('Vissza');
 
@@ -50,4 +50,6 @@ echo "</table><br><br><button type='button', onclick=\"location.href='add_user.p
 echo "<br><br><form action='admin.php' method='post'><button type='submit' name='reset_ids'>$rearrangeIds</button></form>";
 echo "<br><button type='button', onclick=\"location.href='dashboard.php'\">$back</button>";
 echo "</div>";
+
+include 'footer.php';
 ?>

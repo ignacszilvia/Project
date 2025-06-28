@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-include 'headeredit.php';
 require 'backend/lang.php';
 require 'backend/config.php';
 
@@ -30,6 +29,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!DOCTYPE html>
 <head>
+	<?php
+	include 'headeredit.php';
+	?>
 </head>
 <body>
 	<div class="login">
@@ -65,5 +67,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <button type="button" onclick="window.location.href='admin.php';"><?= lang('Vissza') ?></button>
         </div>
 	</div>
+	<?php
+    include 'footer.php';
+    ?>
 </body>
 </html>

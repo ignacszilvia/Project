@@ -1,6 +1,5 @@
 <?php
 session_start();
-include 'header.php';
 require 'backend/lang.php';
 require 'backend/config.php';
 if ($_SESSION['rights'] != 103) {
@@ -24,6 +23,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!DOCTYPE html>
 
 <head>
+	<?php
+	include 'header.php';
+	?>
 </head>
 
 <body>
@@ -65,5 +67,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
 		</form>
 	</div>
+	<?php
+    include 'footer.php';
+    ?>
 </body>
 </html>

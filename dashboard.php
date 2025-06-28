@@ -3,7 +3,6 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-include 'header.php';
 require 'backend/lang.php';
 // include '../style_switcher.php';
 // if (!isset($_SESSION['uid'])) {
@@ -15,6 +14,9 @@ require 'backend/lang.php';
 
 <!DOCTYPE html>
 <head>
+    <?php
+    include 'header.php';
+    ?>
 </head>
 <body>
     <div class="login">
@@ -39,5 +41,8 @@ require 'backend/lang.php';
             <button type="button" onclick="window.location.href='index.php';"><?= lang('Kijelentkezés') ?></button>
         </div>
     </div>
+    <?php
+    include 'footer.php';
+    ?>
 </body>
 </html>

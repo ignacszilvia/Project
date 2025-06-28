@@ -1,5 +1,4 @@
 <?php
-include 'header.php';
 require 'backend/lang.php';
 require 'backend/config.php';
 
@@ -20,6 +19,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!DOCTYPE html>
 <head>
+
+    <?php
+    include 'header.php';
+    ?>
+    
 </head>
 <body>
     <div class="login">
@@ -45,6 +49,19 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <br>
                 <input type="password" name="pass" id="pass" placeholder="<?= lang('Jelszó')?>" required>
             </div>
+            <div id="showpassword">
+                <input id="checkbox" type="checkbox" onclick="togglePasswordVisibility()">
+                <label><?= lang('Jelszó mutatása') ?></label>
+                <script>function togglePasswordVisibility() {
+                    const x = document.getElementById("pass");
+                    if (x.type === "password") {
+                         x.type = "text";
+                    } else {
+                        x.type = "password";
+                    }} 
+                </script>
+                
+                </div>
             <br>
             <div>
                 <button type="submit"><?= lang('Regisztráció')?></button>
@@ -55,5 +72,9 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </form>
     </div>
+
+    <?php
+    include 'footer.php';
+    ?>
 </body>
 </html>

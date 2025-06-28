@@ -1,6 +1,5 @@
 <?php
 session_start();
-include 'header.php';
 require 'backend/lang.php';
 require 'backend/config.php';
 if (!isset($_SESSION['uid']) || $_SESSION['rights'] != 101) {
@@ -29,6 +28,9 @@ $data = $stmt->get_result()->fetch_assoc();
 
 <!DOCTYPE html>
 <head>
+	<?php
+	include 'header.php';
+	?>
 </head>
 <body>
 	<div class="login">
@@ -54,6 +56,9 @@ $data = $stmt->get_result()->fetch_assoc();
             <button type="button" onclick="window.location.href='dashboard.php';"><?= lang('Vissza') ?></button>
     	</div>
 	</div>
+	<?php
+    include 'footer.php';
+    ?>
 </body>
 </html>
 

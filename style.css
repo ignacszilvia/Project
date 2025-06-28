@@ -2,7 +2,7 @@
 
 
 body {
-    font-family: League Spartan;
+    font-family: 'League Spartan';
     background-image: 
         linear-gradient(
                     rgba(184, 167, 209, 0.7), 
@@ -10,7 +10,10 @@ body {
                 ), url(images/background.png);
     min-height: 100vh;
     display:flex;
-    flex-direction:column
+    flex-direction:column;
+    width: 100%;
+    margin: auto;
+    overflow:auto;
 }
 
 .login {
@@ -26,13 +29,15 @@ body {
 
 
 /* Szétcsúszik ha ez az üzenet feljön */
+/*eltolja a .login boxot*/
 .floatingmessage {
+  display: fixed;
   text-align: center; 
   background-color: rgb(247, 247, 247);
   border-radius: 20px;
   padding: 20px;
   width: 10%;
-  margin: 0 auto;
+  margin: 60px auto;
   visibility: visible;
   animation-name: example;
   animation-duration: 5s;
@@ -55,7 +60,7 @@ button {
   border: none;
   border-radius: 20px;
   box-shadow: 1px 2px rgb(94, 71, 71);
-  font-family: League Spartan;
+  font-family: 'League Spartan';
 }
 
 button:hover{
@@ -82,20 +87,20 @@ a:hover {
 }
 
 .langbutton {
-	margin: 0 10px;
+  margin: 0 20px 0 0;
+  float: right;
 }
 
-/* Még szerkeszteni */ 
 header {
   background-color: rgb(247, 247, 247);
   position: fixed;
   top: 0;
-  right: 0;
+  left: 0;
 	padding: 10px;
   width: 100%;
 	justify-content: center;
 	align-items: center;
-  border: 1px solid black;
+  border-bottom: 1px solid rgb(99, 89, 114)
 }
 
 
@@ -105,8 +110,21 @@ input {
   border: 1px solid rgb(184, 167, 209);
   border-radius: 10px;
   text-indent: 10px;
-  font-family: League Spartan;
   font-size: 1em;
+  font-family: 'League Spartan';
+}
+
+#checkbox {
+  width: 20px;
+  height: 20px;
+}
+
+#showpassword {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5vh;
+
 }
 
 /* Még szerkeszteni */ 
@@ -116,25 +134,31 @@ select {
   width: 40%;
   background: rgb(247, 247, 247);
   padding: 7px;
-  transition: 0.4s;
   margin: 10px;
-  font-family: League Spartan;
+  font-family: 'League Spartan';
   font-size: 1em;
 }
 
-option {
-  display: flex;
-  justify-content: flex-start;
-  gap: 20px;
-  border: 2px solid #ddd;
-  background: #eee;
-  padding: 10px;
-  transition: 0.4s;
+/* select:focus {
+  background: rgb(247, 247, 247);
+  font-family: 'League Spartan';
+  font-size: 1em;
 }
 
+select:hover {
+  background: rgb(184, 167, 209)
+} */
+
 option:hover {
-  background-color: rgb(184, 167, 209);
+  background: rgb(184, 167, 209);
 }
+
+/* option {
+  font-family: 'League Spartan';
+  background: rgb(247, 247, 247);
+    border: 2px solid rgb(184, 167, 209);
+  border-radius: 10px;
+} */
 
 .loginlabel {
   padding: 5px;
@@ -161,23 +185,16 @@ td {
   border-color: rgb(184, 167, 209);
 }
 
-#footer {
-  width: 100%;
-  border: 1px solid black;
-  
-}
 
-/* Még szerkeszteni */ 
 footer {
-    margin-top:auto;
-    flex: 10 10 50px;
-    background-color: rgb(247, 247, 247);
+    margin-top: auto;
     width: 100%;
+    background-color: rgb(247, 247, 247);
+    height: 50px;
     color: black;
     text-align: center;
-    height: 50px;
     font-size: 1.1em;
-    border: 1px solid black;
+    border-top: 1px solid rgb(99, 89, 114);
 }
 
 /* body.light {

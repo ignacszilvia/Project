@@ -11,10 +11,10 @@
     <header>
     <div class="header">
         <div>
-            <a href="?lang=hu" class="langbutton">Magyar</a>
+            <a href="#" class="langbutton">Magyar</a>
         </div>
         <div>
-            <a href="?lang=en" class="langbutton">English</a>
+            <a href="#" class="langbutton">English</a>
         </div>
     </div>
     </header>
