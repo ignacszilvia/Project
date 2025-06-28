@@ -1,11 +1,10 @@
 <?php
 
 session_start();
-
-require 'config.php';
+require 'backend/config.php';
 
 if ($_SESSION['rights'] != 103) {
-    exit('Nincs jogusultságod!');
+    exit('<p class=floatingmessage>Nincs jogusultságod!</p>');
 }
 
 $id = $_GET['id'];
