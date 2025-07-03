@@ -4,6 +4,12 @@ session_start();
 require 'backend/lang.php';
 require 'backend/config.php';
 
+
+// if (isset($_SESSION['rights']) && $_SESSION['rights'] === TRUE) {
+//     echo "do this";
+//     exit;
+// }
+
 if ($_SESSION['rights'] != 103) {
     exit('<p class=floatingmessage>Nincs jogosultság!</p>');
 }
@@ -51,11 +57,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			<div class="loginlabel">
 				<label for="rights"><?= lang('Jogosultság') ?></label>
 				<br>
-				<select name="rights" id="rights">
-					<option value="101" <?= $result['rights'] == 101 ? 'selected' : '' ?>><?= lang('Felhasználó') ?></option>
-					<option value="103" <?= $result['rights'] == 103 ? 'selected' : '' ?>>Admin</option>
-			
-				</select><br>
+				<div class="custom-select">
+					<select name="rights" id="rights">
+						<option value="101" <?= $result['rights'] == 101 ? 'selected' : '' ?>><?= lang('Felhasználó') ?></option>
+						<option value="103" <?= $result['rights'] == 103 ? 'selected' : '' ?>>Admin</option>
+					</select>
+				</div>
+			<br>
 			</div>
 
 			<div>

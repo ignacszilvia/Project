@@ -5,6 +5,9 @@ session_start();
 require 'backend/lang.php';
 require 'backend/config.php';
 
+$username_error = null;  
+$password_error = null; 
+
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
     $mail = htmlspecialchars($_POST['mail']);
     $pass = htmlspecialchars($_POST['pass']);
@@ -21,12 +24,14 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['rights'] = $user['rights'];
             header('Location: dashboard.php');
         } else {
-                echo "<div class=floatingmessage><p>Hibás jelszó!</p></div>";
+            $password_error = lang('Hibás jelszó!');
         }
     } else {
-        echo "<div class=floatingmessage><p>Nincs ilyen felhasználó!</p></div>";
+        $username_error = lang('Nincs ilyen felhasználó!');
     }
 }
+
+
 
 ?>
 
@@ -48,12 +53,21 @@ include 'header.php';
                     <label for="mail"><?= lang('E-mail')?></label>
                     <br>
                     <input type="email" name="mail" id="mail" placeholder="<?= lang('E-mail cím')?>">
+                    <br>                   
+                    <p class="wronglogin" hidden>
+	                    <?php echo $username_error; ?>
+                    </p>
                 </div>
                 <div class="loginlabel">
                     <label for="pass"><?= lang('Jelszó')?></label>
                     <br>
                     <input type="password" name="pass" id="pass" placeholder="<?= lang('Jelszó')?>">
                     <br>
+                    <div class="wronglogin">
+                        <p>
+                            <?php echo $password_error; ?> 
+                        </p>
+                    </div>
                 </div>
                 <div id="showpassword">
                     <input id="checkbox" type="checkbox" onclick="togglePasswordVisibility()">
@@ -68,7 +82,7 @@ include 'header.php';
                         } </script>
                 
                 </div>
-
+                <br>
                 <div>
                     <button type="submit"><?= lang('Bejelentkezés')?></button>
                 </div>

@@ -27,6 +27,10 @@ body {
   margin-top: 10%;
 }
 
+.loginlabel {
+  padding: 5px;
+}
+
 
 /* Szétcsúszik ha ez az üzenet feljön */
 /*eltolja a .login boxot*/
@@ -49,6 +53,14 @@ body {
     from {opacity: 2;}
     to {opacity: 0;}
   }
+
+/*nincs középen!!*/
+.wronglogin {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 30%;
+}
 
 button {
   font-weight: bold;
@@ -117,6 +129,7 @@ input {
 #checkbox {
   width: 20px;
   height: 20px;
+  margin-right: 10px;
 }
 
 #showpassword {
@@ -127,7 +140,6 @@ input {
 
 }
 
-/* Még szerkeszteni */ 
 select {
   border: 2px solid rgb(184, 167, 209);
   border-radius: 10px;
@@ -137,31 +149,8 @@ select {
   margin: 10px;
   font-family: 'League Spartan';
   font-size: 1em;
-}
-
-/* select:focus {
-  background: rgb(247, 247, 247);
-  font-family: 'League Spartan';
-  font-size: 1em;
-}
-
-select:hover {
-  background: rgb(184, 167, 209)
-} */
-
-option:hover {
-  background: rgb(184, 167, 209);
-}
-
-/* option {
-  font-family: 'League Spartan';
-  background: rgb(247, 247, 247);
-    border: 2px solid rgb(184, 167, 209);
-  border-radius: 10px;
-} */
-
-.loginlabel {
-  padding: 5px;
+  background-clip: padding-box;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 table {

@@ -24,6 +24,8 @@ $lang = [
     'ID-k újrasorszámozása'=>'Reassign IDs',
     'Új felhasználó hozzáadása'=>'Add New User',
     'Jelszó mutatása'=>'Show Password',
+    'Hibás jelszó!'=>'Wrong password!',
+    'Nincs ilyen felhasználó!'=>'User does not exist!',
 
 ];
 
