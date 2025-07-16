@@ -4,11 +4,18 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 require 'backend/lang.php';
+
 // include '../style_switcher.php';
 // if (!isset($_SESSION['uid'])) {
 //     header('Location:./index.php');
 //     exit();
 // }
+
+if(!isset($_SESSION['username']) || (trim($_SESSION['username']) == '')) {
+        header("location: index.php");
+        exit();
+    }
+            
 ?>
 
 
@@ -21,16 +28,20 @@ require 'backend/lang.php';
 <body>
     <div class="login">
         <div>
-            <!-- Változtatás után nem cseréli meg a felhasználónevet-->
+            <!-- Változtatás után nem cseréli meg a felhasználónevet az adminnál-->
             <?php
             $hello = lang('Szia');
             $adminPage = lang('Admin felület');
             $userData = lang('Saját adataid');
+            $myprojects = lang('Projektjeim');
+            $addproject = lang('Projekt hozzáadása');
             echo "<h2>$hello, " . $_SESSION['username'] . "!</h2><br>";
             if($_SESSION['rights'] == 103) {
-                echo "<button type='button', onclick=\"location.href='admin.php'\">$adminPage</button>";
+                echo "<button type='button', class='button', onclick=\"location.href='admin.php'\">$adminPage</button>";
             } else {
-                echo "<button type='button', onclick=\"location.href='user.php'\">$userData</button>";
+                echo "<div><button type='button', class='button', onclick=\"location.href='user.php'\">$userData</button></div>";
+                echo "<br><div><button type='button', class='button', onclick=\"location.href='myprojects.php'\">$myprojects</button></div>";
+                echo "<br><div><button type='button', class='button', onclick=\"location.href='addproject.php'\">$addproject</button></div>";
             }
 
             ?>
@@ -38,7 +49,7 @@ require 'backend/lang.php';
         </div>
         <br>
         <div>
-            <button type="button" onclick="window.location.href='index.php';"><?= lang('Kijelentkezés') ?></button>
+            <button type="button" class="button" onclick="window.location.href='backend/logout.php'"><?= lang('Kijelentkezés') ?></button>
         </div>
     </div>
     <?php

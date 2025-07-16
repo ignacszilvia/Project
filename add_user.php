@@ -1,7 +1,11 @@
 <?php
 session_start();
+
 require 'backend/lang.php';
 require 'backend/config.php';
+
+error_reporting(E_ERROR | E_PARSE);
+
 if ($_SESSION['rights'] != 103) {
     exit('<p class=floatingmessage>Nincs jogosultság!</p>');
 }
@@ -24,8 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <head>
 	<?php
-	include 'header.php';
-	?>
+    include 'header.php';
+    ?>
 </head>
 
 <body>
@@ -59,11 +63,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			</div>	
 			<br>
 			<div class="loginlabel">
-				<button type="submit"><?= lang('Új felhasználó hozzáadása') ?></button>
+				<button type="submit" class="button"><?= lang('Új felhasználó hozzáadása') ?></button>
 			</div>
 			<br>
 			<div>
-                <button type="button" onclick="window.location.href='admin.php';"><?= lang('Vissza') ?></button>
+                <button type="button" onclick="window.location.href='admin.php';" class="button"><?= lang('Vissza') ?></button>
             </div>
 		</form>
 	</div>

@@ -26,6 +26,15 @@ $lang = [
     'Jelszó mutatása'=>'Show Password',
     'Hibás jelszó!'=>'Wrong password!',
     'Nincs ilyen felhasználó!'=>'User does not exist!',
+    'Projektjeim'=>'My Projects',
+    'Projekt hozzáadása'=>'Add Project',
+    'Hobbihorgolás'=>'Hobbycrochet',
+    'HOBBIHORGOLÁS'=>'HOBBYCROCHET',
+    'Főoldal'=>'Home',
+    'Rólunk'=>'About',
+    'Kapcsolat'=>'Contact',
+    'Nyelv'=>'Language',
+
 
 ];
 

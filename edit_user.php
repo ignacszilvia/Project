@@ -10,9 +10,12 @@ require 'backend/config.php';
 //     exit;
 // }
 
+error_reporting(E_ERROR | E_PARSE);
+    
 if ($_SESSION['rights'] != 103) {
     exit('<p class=floatingmessage>Nincs jogosultság!</p>');
 }
+
 
 $id = $_GET['id'];
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -67,12 +70,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			</div>
 
 			<div>
-				<button type="submit"><?= lang('Mentés') ?></button>
+				<button type="submit" class="button"><?= lang('Mentés') ?></button>
 			</div>
 			<br>
 		</form>
 		<div>
-            <button type="button" onclick="window.location.href='admin.php';"><?= lang('Vissza') ?></button>
+            <button type="button" onclick="window.location.href='admin.php';" class="button"><?= lang('Vissza') ?></button>
         </div>
 	</div>
 	<?php

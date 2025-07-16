@@ -48,12 +48,12 @@ $data = $stmt->get_result()->fetch_assoc();
 			</div>
 			<br>
 			<div>
-				<button type="submit"><?= lang('Mentés') ?></button>
+				<button type="submit" class="button"><?= lang('Mentés') ?></button>
 			</div>
 		</form>
 		<br>
 		<div>
-            <button type="button" onclick="window.location.href='dashboard.php';"><?= lang('Vissza') ?></button>
+            <button type="button" class="button" onclick="window.location.href='dashboard.php';"><?= lang('Vissza') ?></button>
     	</div>
 	</div>
 	<?php

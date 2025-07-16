@@ -28,7 +28,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <div class="login">
         <div>
-            <h2><?= lang('ÜDVÖZÖLÜNK A HOBBIHORGOLÁS WEBOLDALON')?></h2>
+            <h2 class="welcome"><?= lang('ÜDVÖZÖLÜNK A HOBBIHORGOLÁS WEBOLDALON')?></h2>
         </div>
         <form method="post">
             <div class="loginlabel">
@@ -64,11 +64,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
             <br>
             <div>
-                <button type="submit"><?= lang('Regisztráció')?></button>
+                <button type="submit" class="button"><?= lang('Regisztráció')?></button>
             </div>
             <br>
             <div>
-                <button type="button" onclick="window.location.href='index.php';"><?= lang('Vissza')?></button>
+                <button type="button"  class="button" onclick="window.location.href='index.php';"><?= lang('Vissza')?></button>
             </div>
         </form>
     </div>

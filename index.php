@@ -31,8 +31,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-
-
 ?>
 
 <!DOCTYPE html>
@@ -45,7 +43,7 @@ include 'header.php';
 
     <div class="login">
         <div>
-            <h2><?= lang('ÜDVÖZÖLÜNK A HOBBIHORGOLÁS WEBOLDALON')?></h2>
+            <h2 class="welcome"><?= lang('ÜDVÖZÖLÜNK A HOBBIHORGOLÁS WEBOLDALON')?></h2>
         </div>
         <div>
             <form method="post">
@@ -53,18 +51,21 @@ include 'header.php';
                     <label for="mail"><?= lang('E-mail')?></label>
                     <br>
                     <input type="email" name="mail" id="mail" placeholder="<?= lang('E-mail cím')?>">
-                    <br>                   
-                    <p class="wronglogin" hidden>
-	                    <?php echo $username_error; ?>
-                    </p>
+                    <br> 
+                    <div>                  
+
+                    </div>
                 </div>
                 <div class="loginlabel">
                     <label for="pass"><?= lang('Jelszó')?></label>
                     <br>
                     <input type="password" name="pass" id="pass" placeholder="<?= lang('Jelszó')?>">
                     <br>
-                    <div class="wronglogin">
-                        <p>
+                    <div>
+                        <p >
+	                        <?php echo $username_error; ?>
+                        </p>
+                        <p >
                             <?php echo $password_error; ?> 
                         </p>
                     </div>
@@ -84,7 +85,7 @@ include 'header.php';
                 </div>
                 <br>
                 <div>
-                    <button type="submit"><?= lang('Bejelentkezés')?></button>
+                    <button type="submit" class="button"><?= lang('Bejelentkezés')?></button>
                 </div>
             </form>
         </div>
@@ -93,7 +94,7 @@ include 'header.php';
 
         <div>
             <div>
-                <button type="button" onclick="window.location.href='register.php';"><?= lang('Regisztráció')?></button>
+                <button type="button"  class="button" onclick="window.location.href='register.php';"><?= lang('Regisztráció')?></button>
             </div>
         </div>
     </div>

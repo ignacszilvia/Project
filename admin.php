@@ -1,7 +1,6 @@
 <?php
 
 session_start();
-include 'header.php';
 require 'backend/lang.php';
 require 'backend/config.php';
 if (!isset($_SESSION['uid']) || $_SESSION['rights'] != 103) {
@@ -16,7 +15,7 @@ if(isset($_POST['reset_ids'])){
 header("Location: admin.php");
 exit();
 }
-
+include 'header.php';
 $userList = lang('Felhasználók listája');
 $uname = lang('Felhasználónév');
 $role = lang('Jogosultság');
@@ -36,8 +35,8 @@ while ($row = $result->fetch_assoc()) {
         <td>{$row['mail']}</td>
         <td>{$row['rights']}</td>
         <td>
-            <a href='edit_user.php?id={$row['uid']}'>$edit</a>
-            <a href='delete_user.php?id={$row['uid']}'>$delete</a>
+            <a href='edit_user.php?id={$row['uid']}' class='link'>$edit</a>
+            <a href='delete_user.php?id={$row['uid']}' class='link'>$delete</a>
         </td>
         </tr>";
 }
@@ -46,9 +45,9 @@ $newUser = lang('Új felhasználó hozzáadása');
 $rearrangeIds = lang('ID-k újrasorszámozása');
 $back = lang('Vissza');
 
-echo "</table><br><br><button type='button', onclick=\"location.href='add_user.php'\">$newUser</button>";
-echo "<br><br><form action='admin.php' method='post'><button type='submit' name='reset_ids'>$rearrangeIds</button></form>";
-echo "<br><button type='button', onclick=\"location.href='dashboard.php'\">$back</button>";
+echo "</table><br><br><button type='button', class='button', onclick=\"location.href='add_user.php'\">$newUser</button>";
+echo "<br><br><form action='admin.php' method='post'><button type='submit' class='button', name='reset_ids'>$rearrangeIds</button></form>";
+echo "<br><button type='button', class='button', onclick=\"location.href='dashboard.php'\">$back</button>";
 echo "</div>";
 
 include 'footer.php';
