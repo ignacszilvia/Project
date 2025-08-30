@@ -1,0 +1,211 @@
+<?php
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    session_start();
+}
+
+require $_SERVER['DOCUMENT_ROOT'] . '/project/backend/config.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/project/backend/lang.php';
+
+if (!isset($_SESSION['uid']) || $_SESSION['rights'] != 103) {
+    header('Location: /project/login.php?error=no_permission');
+    exit();
+}
+
+$target_uid = $_GET['id'] ?? $_SESSION['uid'];
+if (!is_numeric($target_uid)) {
+    die("Invalid user ID provided.");
+}
+
+$id = $target_uid;
+
+// Felhasználónév lekérése
+$stmt_user = $conn->prepare("SELECT username FROM users WHERE uid = ?");
+$stmt_user->bind_param("i", $target_uid);
+$stmt_user->execute();
+$user_result = $stmt_user->get_result();
+$user_data = $user_result->fetch_assoc();
+$stmt_user->close();
+$target_username = $user_data['username'] ?? 'Ismeretlen felhasználó';
+
+// Rendezés
+$sort_by = $_GET['sort_by'] ?? 'name';
+
+// Keresés lellenőrzése
+$search_query = htmlspecialchars($_GET['search_query'] ?? '');
+$search_filter = $_GET['search_filter'] ?? 'name';
+
+// sql lekérdezés előkészítése
+$sql = "SELECT p.id, p.name, p.yarn, p.hook, p.image, p.description FROM projects AS p";
+
+// A yarn tábla id egyesítése a projekt tábla yarn oszlopával
+if (!empty($search_query) && $search_filter === 'yarn') {
+    $sql .= " INNER JOIN yarns AS y ON p.yarn = y.id";
+}
+
+$sql .= " WHERE p.uid = ?";
+$params = [$target_uid];
+$param_types = "i";
+
+// Keresés feltételek beállítása
+if (!empty($search_query)) {
+    switch ($search_filter) {
+        case 'name':
+            $sql .= " AND name LIKE ?";
+            $params[] = "%" . $search_query . "%";
+            $param_types .= "s";
+            break;
+        case 'hook':
+            $sql .= " AND hook LIKE ?";
+            $params[] = "%" . $search_query . "%";
+            $param_types .= "s";
+            break;
+        case 'yarn':
+            $sql .= " AND (y.brand LIKE ? OR y.variety LIKE ?)";
+            $params[] = "%" . $search_query . "%";
+            $params[] = "%" . $search_query . "%";
+            $param_types .= "ss";
+            break;
+        case 'description':
+            $sql .= " AND description LIKE ?";
+            $params[] = "%" . $search_query . "%";
+            $param_types .= "s";
+            break;
+        default:
+            $sql .= " AND name LIKE ?";
+            $params[] = "%" . $search_query . "%";
+            $param_types .= "s";
+            break;
+    }
+}
+
+// Rendezés beállítása
+switch ($sort_by) {
+    case 'id_desc':
+        $sql .= " ORDER BY p.id DESC";
+        break;
+    case 'id_asc':
+        $sql .= " ORDER BY p.id ASC";
+        break;
+    case 'name':
+    default:
+        $sql .= " ORDER BY p.name ASC";
+        break;
+}
+
+// Végrehajtás
+$stmt = $conn->prepare($sql);
+if ($stmt === false) {
+    die("Error preparing statement: " . $conn->error);
+}
+
+$stmt->bind_param($param_types, ...$params);
+$stmt->execute();
+$result = $stmt->get_result();
+$noprojects = lang('Nincs projekt hozzáadva');
+
+// Az összes sort egy tömbbe ehlyezi el
+$projects = $result->fetch_all(MYSQLI_ASSOC);
+
+$stmt->close();
+$conn->close();
+
+?>
+
+<!DOCTYPE html>
+<head>
+    <?php
+    include $_SERVER['DOCUMENT_ROOT'] . '/project/frontend/header.php';
+    ?>
+</head>
+<body>
+    <div class="page_container">
+        <main class="page_content">
+            <div class="main_body">
+                <?php
+                include $_SERVER['DOCUMENT_ROOT'] . '/project/frontend/sidebar_admin.php';
+                ?>
+                <div class="main_container">
+                    <img src="/project/images/yarn2.png" class="image-center">
+                    <h2><a href="/project/admin/projects_admin.php?id=<?= htmlspecialchars($id) ?>" class="project_link"><?= htmlspecialchars($target_username) ?> <?= lang('projektjei') ?></a></h2>
+                    <div class="search-container">
+                        <form method="GET" action="">
+                            <input type="hidden" name="id" value="<?= htmlspecialchars($target_uid) ?>">
+                            <input type="text" placeholder="<?= lang('Projekt keresése...') ?>" name="search_query" value="<?= htmlspecialchars($_GET['search_query'] ?? '') ?>">
+                            <select name="search_filter" class="select-search">
+                                <option value="name" <?= ($search_filter === 'name') ? 'selected' : '' ?>><?= lang('Név') ?></option>
+                                <option value="yarn" <?= ($search_filter === 'yarn') ? 'selected' : '' ?>><?= lang('Fonal') ?></option>
+                                <option value="hook" <?= ($search_filter === 'hook') ? 'selected' : '' ?>><?= lang('Horgolótű') ?></option>
+                                <option value="description" <?= ($search_filter === 'description') ? 'selected' : '' ?>><?= lang('Leírás') ?></option>
+                            </select>
+                            <button type="submit" class="button-search"><?= lang('Keresés') ?></button>
+                        </form>
+                    </div>
+                    <br>
+                    <div class="sort-container">
+                        <form method="GET" action="">
+                            <input type="hidden" name="id" value="<?= htmlspecialchars($target_uid) ?>">
+                            <input type="hidden" name="search_query" value="<?= htmlspecialchars($_GET['search_query'] ?? '') ?>">
+                            <input type="hidden" name="search_filter" value="<?= htmlspecialchars($_GET['search_filter'] ?? '') ?>">
+                            <label for="sort_by"><?= lang('Rendezés:') ?></label>
+                            <select name="sort_by" id="sort_by" class="select-sort" onchange="this.form.submit()">
+                                <option value="name" <?= (!isset($_GET['sort_by']) || $_GET['sort_by'] === 'name') ? 'selected' : '' ?>><?= lang('Név szerint') ?></option>
+                                <option value="id_desc" <?= (isset($_GET['sort_by']) && $_GET['sort_by'] === 'id_desc') ? 'selected' : '' ?>><?= lang('Legújabb') ?></option>
+                                <option value="id_asc" <?= (isset($_GET['sort_by']) && $_GET['sort_by'] === 'id_asc') ? 'selected' : '' ?>><?= lang('Legrégebbi') ?></option>
+                            </select>
+                        </form>
+                    </div>
+                    <div class="projects-grid">
+                        <?php if (!empty($projects)): ?>
+                        <?php foreach ($projects as $row): ?>
+                            <div class='project-item'>
+                                <div>
+                                    <p style='font-size:1em;'>
+                                        <img src='/project/images/yarnlilac.png' style='width:25px; vertical-align: middle;'>
+                                        <a href='/project/admin/project_page_admin.php?id=<?= htmlspecialchars($row['id']) ?>&uid=<?= htmlspecialchars($target_uid) ?>' style='text-decoration:none; color:rgb(75, 75, 75); margin-top:40px'>
+                                            <b><?= htmlspecialchars($row['name']) ?></b>
+                                        </a>
+                                        <img src='/project/images/yarnlilac.png' style='width:25px; vertical-align: middle;'>
+                                    </p>
+                                </div>
+                                <div>
+                                    <?php
+                                    $image_paths = array_filter(explode(',', $row['image']));
+                                        
+                                    if (!empty($image_paths)) {
+                                        $random_image_path = $image_paths[array_rand($image_paths)];
+                                        $image_source = trim($random_image_path);
+                                    } else {
+                                        $image_source = '/project/images/no-file-found-yarn-ball.png';
+                                        }
+                                        ?>
+                                        <a href='/project/admin/project_page_admin.php?id=<?= htmlspecialchars($row['id']) ?>&uid=<?= htmlspecialchars($target_uid) ?>' style='text-decoration:none; color:rgb(75, 75, 75); margin-top:40px'>
+                                        <img src='<?= htmlspecialchars($image_source) ?>' alt='Project image' class="project-image">
+                                        </a>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                        <?php else: ?>
+                            <div style='border: 1px solid rgb(90, 90, 90) text-align=center;'><p colspan='6'><?= htmlspecialchars($noprojects) ?></p></div>
+                        <?php endif; ?>
+                    </div>
+                    <div>
+                        <a href="/project/admin/user_profile_admin.php?id=<?= htmlspecialchars($id) ?>" class="button-link">
+                            <?= lang('Vissza') ?>
+                        </a>
+			        </div>
+
+                    <img src="/project/images/yarn2flipped.png" class="image-center">
+                </div>
+            </div>
+        </main>
+        
+    </div>
+
+    <?php 
+    include $_SERVER['DOCUMENT_ROOT'] . '/project/frontend/footer.php';
+    ?>
+
+    <noscript>Free cookie consent management tool by <a href="https://www.termsfeed.com/">TermsFeed Generator</a></noscript>
+
+</body>
+</html>

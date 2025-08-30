@@ -1,4 +1,5 @@
 <?php
+
 if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 }
@@ -6,7 +7,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 require $_SERVER['DOCUMENT_ROOT'] . '/project/backend/config.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/project/backend/lang.php';
 
-if (!isset($_SESSION['uid']) || $_SESSION['rights'] != 101) {
+if (!isset($_SESSION['uid']) || $_SESSION['rights'] != 103) {
     header('Location: /project/login.php?error=no_permission');
     exit();
 }
@@ -48,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['message'] = lang('Sikeres módosítás!');
 
             // Visszirányít a felhasználói profil oldalra.
-            header("Location: /project/user_profile.php");
+            header("Location: /project/admin/admin_profile.php");
             // Rögtön lezárja a scripter.
             exit;
         }
@@ -76,40 +77,40 @@ $stmt_get_data->close();
         <main class="page_content">
             <div class="main_body">
                 <?php
-                include $_SERVER['DOCUMENT_ROOT'] . '/project/frontend/sidebar.php';
+                include $_SERVER['DOCUMENT_ROOT'] . '/project/frontend/sidebar_admin.php';
                 ?>
                 <div class="main_container">
-                    <img src="/project/images/yarn2.png" class="image-center">
+					<img src="/project/images/yarn2.png" class="image-center">
                     <h2><?= lang('Adatok módosítása') ?></h2>
-                    <form method="post">
-                        <div class="loginlabel">
-                            <label for="username"><?= lang('Felhasználónév') ?></label>
-                            <br>
-                            <input type="text" name="username" id="username" value="<?= htmlspecialchars($data['username']) ?>" minlength="8" maxlength="20" required>
-                        </div>
-                        <div class="loginlabel">
-                            <label for="mail">E-mail</label>
-                            <br>
-                            <input type="email" name="mail" id="mail" value="<?= htmlspecialchars($data['mail']) ?>" required>
-                        </div>
-                        <br>
+		            <form method="post">
+			            <div class="loginlabel">
+				            <label for="username"><?= lang('Felhasználónév') ?></label>
+				            <br>
+				            <input type="text" name="username" id="username" value="<?= htmlspecialchars($data['username']) ?>" minlength="8" minlength="20" required>
+			            </div>
+			            <div class="loginlabel">
+				            <label for="mail">E-mail</label>
+				            <br>
+				            <input type="email" name="mail" id="mail" value="<?= htmlspecialchars($data['mail']) ?>" required>
+			            </div>
+			            <br>                        
                         <div>
                             <?php if (!empty($message)): ?>
                             <p><?= htmlspecialchars($message) ?></p>
                             <?php endif; ?>
                         </div>
                         <br>
-                        <div>
-                            <button type="submit" class="button"><?= lang('Mentés') ?></button>
-                            <br><br>
-                            <a href="/project/user_profile.php" class="button-link">
-                                <?= lang('Vissza') ?>
-                            </a>
-                        </div>
-                    </form>
-                    <br>
-                    <img src="/project/images/yarn2flipped.png" class="image-center">
-                </div>
+			            <div>
+				            <button type="submit" class="button"><?= lang('Mentés') ?></button>
+			            </div>
+		            </form>
+		            <br>
+				    <div>
+                        <a href="/project/admin/admin_profile.php" class="button-link"><?= lang('Vissza') ?></a>
+    	            </div>
+		            <br>
+					<img src="/project/images/yarn2flipped.png" class="image-center">
+		        </div>
             </div>
         </main>
     </div> 
@@ -119,8 +120,6 @@ $stmt_get_data->close();
     ?>
 
     <noscript>Free cookie consent management tool by <a href="https://www.termsfeed.com/">TermsFeed Generator</a></noscript>
-
+    
 </body>
 </html>
-
-

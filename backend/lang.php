@@ -10,7 +10,7 @@
         $_SESSION['lang'] = $_SESSION['lang'] ?? 'hu';
         $_SESSION['lang'] = $_GET['lang'] ?? $_SESSION['lang'];
         
-        return "./languages/".$_SESSION['lang'].".php";
+        return $_SERVER['DOCUMENT_ROOT'] . "/project/backend/languages/".$_SESSION['lang'].".php";
 
     }
 

@@ -1,7 +1,7 @@
 <?php
 
 $host = 'localhost';
-$db = 'nagyfeladat1';
+$db = 'crochetproject';
 $user = 'root';
 $pass = '';
 $conn = new mysqli ($host, $user, $pass, $db);
