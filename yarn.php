@@ -14,6 +14,8 @@ require $_SERVER['DOCUMENT_ROOT'] . '/project/backend/lang.php';
     <?php
     include $_SERVER['DOCUMENT_ROOT'] . '/project/frontend/header.php';
     ?>
+
+    <script src="/project/scripts/sidebar_toggle.js"></script>
 </head>
 <body onload="Betolt()">
     <div class="page_container">

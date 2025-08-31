@@ -42,9 +42,13 @@ $szerkesztes = lang('Szerkesztés');
 
 <!DOCTYPE html>
 <head>
+
     <?php
     include $_SERVER['DOCUMENT_ROOT'] . '/project/frontend/header.php';
     ?>
+
+    <script src="/project/scripts/sidebar_toggle.js"></script>
+    
 </head>
 <body>
     <div class="page_container">
@@ -121,8 +125,6 @@ $szerkesztes = lang('Szerkesztés');
     <?php 
     include $_SERVER['DOCUMENT_ROOT'] . '/project/frontend/footer.php';
     ?>
-    
-    <noscript>Free cookie consent management tool by <a href="https://www.termsfeed.com/">TermsFeed Generator</a></noscript>
 
 </body>
 </html>

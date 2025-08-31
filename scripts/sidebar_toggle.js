@@ -1,4 +1,4 @@
-// Ha a menu-toggle gomba megnyomásra kerül a sidebarh-hoz hozzáadódik az active class. Ha rajta van akkor pedig kiveszi az active class-t.
+// Ha a menu-toggle gomba megnyomásra kerül a sidebar-hoz hozzáadódik az active class. Ha rajta van akkor pedig kiveszi az active class-t.
 
 document.addEventListener('DOMContentLoaded', function() {
     const menuToggle = document.querySelector('.menu-toggle');

@@ -70,6 +70,7 @@ $lang = [
     'Nincs megadva fonal.'=>'No yarn selected.',
     'Nincs kép feltöltve.'=>'No photo uploaded.',
     'Felhasználó törlése'=>'Delete user',
+    'Fonaladatbázis'=>'Yarn Database',
     
 
     

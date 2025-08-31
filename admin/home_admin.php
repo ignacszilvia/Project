@@ -17,9 +17,13 @@ if (!isset($_SESSION['uid']) || $_SESSION['rights'] != 103) {
 <!DOCTYPE html>
 <head>
 
-<?php
-include $_SERVER['DOCUMENT_ROOT'] . '/project/frontend/header.php';
-?>
+    <?php
+    include $_SERVER['DOCUMENT_ROOT'] . '/project/frontend/header.php';
+    ?>
+
+    <script src="/project/scripts/api_quote.js"></script>
+    <script src="/project/scripts/home_text.js"></script>
+    <script src="/project/scripts/sidebar_toggle.js"></script>
 
 </head>
 <body>
@@ -82,8 +86,6 @@ include $_SERVER['DOCUMENT_ROOT'] . '/project/frontend/header.php';
     <?php
     include $_SERVER['DOCUMENT_ROOT'] . '/project/frontend/footer.php';
     ?>
-
-    <noscript>Free cookie consent management tool by <a href="https://www.termsfeed.com/">TermsFeed Generator</a></noscript>
     
 </body>
 </html>

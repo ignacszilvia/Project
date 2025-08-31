@@ -20,16 +20,10 @@ if (isset($_SESSION['rights'])) {
     <title>GildedHook</title>
     <link rel="stylesheet" href="/project/frontend/style.css">
     <link rel="icon" type="image/x-icon" href="/project/images/yarnballlogolilac.png">
-    <script src="/project/scripts/cookie.js" type="text/javascript" charset="UTF-8"></script>
-    <script type="text/javascript" src="//www.termsfeed.com/public/cookie-consent/4.2.0/cookie-consent.js&quot; charset="UTF-8"></script>
-    <script src="/project/scripts/sidebar_toggle.js"></script>
     <script src="/project/scripts/confirm_deletion.js"></script>
-    <script src="/project/scripts/home_text.js"></script>
-    <script src="/project/scripts/password_visibility.js"></script>
-    <script src="/project/scripts/api_quote.js"></script>
 	<script src="/project/scripts/choose_language.js"></script>
-	<script src="/project/scripts/delete_image.js"></script>
-	<script src="/project/scripts/cookie.js"></script>
+	<script src="/project/scripts/cookie.js" type="text/javascript" charset="UTF-8"></script>
+	<script type="text/javascript" src="//www.termsfeed.com/public/cookie-consent/4.2.0/cookie-consent.js" charset="UTF-8"></script>
 	<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>

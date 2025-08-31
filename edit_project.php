@@ -156,6 +156,10 @@ $conn->close();
     <?php
     include $_SERVER['DOCUMENT_ROOT'] . '/project/frontend/header.php';
     ?>
+
+    <script src="/project/scripts/delete_image.js"></script>
+    <script src="/project/scripts/sidebar_toggle.js"></script>
+
 </head>
 <body>
     <div class="page_container">
@@ -275,7 +279,6 @@ $conn->close();
     include $_SERVER['DOCUMENT_ROOT'] . '/project/frontend/footer.php';
     ?>
 
-    <noscript>Free cookie consent management tool by <a href="https://www.termsfeed.com/">TermsFeed Generator</a></noscript>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {

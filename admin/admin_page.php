@@ -58,6 +58,9 @@ $stmt->close();
 	<?php
 		include $_SERVER['DOCUMENT_ROOT'] . '/project/frontend/header.php';
 	?>
+
+    <script src="/project/scripts/sidebar_toggle.js"></script>
+    
 </head>
 <body>
     <div class="page_container">
@@ -91,7 +94,7 @@ $stmt->close();
                                         <td>
                                             <a href='/project/admin/user_profile_admin.php?id=<?= htmlspecialchars($row['uid']) ?>' class='link'><?= lang('Profil megtekintése') ?></a>
                                             <a href='?ban=<?= htmlspecialchars($row['uid']) ?>' class='link' onclick='return confirm("Biztosan ki akarod tiltani a felhasználót?");'><?= lang('Kitiltás') ?></a>
-                                            <a href='delete_user.php?delete=<?= htmlspecialchars($row['uid']) ?>' class='link' onclick='return confirm("Biztosan törölni akarod a felhasználót? Ez a művelet visszafordíthatatlan!");'><?= lang('Felhasználó törlése') ?></a>
+                                            <a href='/project/backend/delete_user.php?delete=<?= htmlspecialchars($row['uid']) ?>' class='link' onclick='return confirm("Biztosan törölni akarod a felhasználót? Ez a művelet visszafordíthatatlan!");'><?= lang('Felhasználó törlése') ?></a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -113,8 +116,6 @@ $stmt->close();
     <?php
     include $_SERVER['DOCUMENT_ROOT'] . '/project/frontend/footer.php';
     ?>
-
-    <noscript>Free cookie consent management tool by <a href="https://www.termsfeed.com/">TermsFeed Generator</a></noscript>
 
 </body>
 </html>
