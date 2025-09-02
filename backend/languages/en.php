@@ -71,6 +71,14 @@ $lang = [
     'Nincs kép feltöltve.'=>'No photo uploaded.',
     'Felhasználó törlése'=>'Delete user',
     'Fonaladatbázis'=>'Yarn Database',
+    'Fonal hozzáadása'=>'Add Yarn',
+    'Új fonal hozzáadása'=>'Add New Yarn',
+    'Új márka hozzáadása'=>'Add New Brand',
+    'Új márka neve'=>'New Brand',
+    'Fonal sikeresen hozzáadva!'=>'Yarn added successfully!',
+    'Nem sikerült hozzáadni.'=>'Failed to add yarn.',
+    'Adatbázis kapcsolat megszakadt.'=>'Database connection failed.',
+    'Kérjük töltsd ki az összes mezőt.'=>'Please fill in all fields.',
     
 
     

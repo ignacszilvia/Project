@@ -165,14 +165,9 @@ $conn->close();
     <div class="page_container">
         <main class="page_content">
             <div class="main_body">
-                <button class="menu-toggle">☰</button>
-                <div class="sidebar">
-                    <a href="/project/home.php" id="edit-user"><?= lang('Főoldal') ?></a>
-                    <a href="/project/my_projects.php" id="my-projects"><?= lang('Projektjeim') ?></a>
-                    <a href="/project/add_project.php" id="add-project"><?= lang('Projekt hozzáadása') ?></a>
-                    <a href="/project/user_profile.php" id="edit-user"><?= lang('Profil') ?></a>
-                    <a href="/project/backend/logout.php"><?= lang('Kijelentkezés') ?></a>
-                </div>
+                <?php
+                include $_SERVER['DOCUMENT_ROOT'] . '/project/frontend/sidebar.php';
+                ?>
                 <div class="main_container">
                     <img src="/project/images/yarn2.png" class="image-center">
                     <h2><?= lang('Projekt szerkesztése') ?></h2>

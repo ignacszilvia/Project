@@ -42,7 +42,6 @@ $stmt_get_data->close();
                 <div class="main_container">
 					<img src="/project/images/yarn2.png" class="image-center">
                     <h2><?= lang('Profil') ?></h2>
-
 		            <p class="label"><?= lang('Felhasználónév') ?>:</p>
                     <p><?= htmlspecialchars($data['username']) ?></p>
                     <p class="label">E-mail:</p>

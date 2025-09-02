@@ -14,6 +14,16 @@ if (!isset($_SESSION['uid']) || $_SESSION['rights'] != 101) {
     exit();
 }
 
+// Lekéri a bejelentkezett felhasználó id-át.
+$uid = $_SESSION['uid'];
+
+// Lekéri a bejelentkezett felhasználó adatait.
+$stmt_get_data = $conn->prepare("SELECT username FROM users WHERE uid = ?");
+$stmt_get_data->bind_param("i", $uid);
+$stmt_get_data->execute();
+$data = $stmt_get_data->get_result()->fetch_assoc();
+$stmt_get_data->close();
+
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +48,7 @@ if (!isset($_SESSION['uid']) || $_SESSION['rights'] != 101) {
                 ?>
                 <div class="main_container_home">
                     <img src="/project/images/yarn2.png" class="image-center">
-                    <p class="p"><?= lang('Üdvözlünk') ?></p>
+                    <p class="p"><?= lang('Üdvözlünk') ?> <?= htmlspecialchars($data['username']) ?></p>
                     <p class="p"><?= lang('a') ?></p>
 
                     <div class="style-container">
@@ -71,7 +81,7 @@ if (!isset($_SESSION['uid']) || $_SESSION['rights'] != 101) {
                     </div>
                     <br>
                     <p class="p-small"><?= lang('weboldalon') ?></p>
-                    <br><br><br><br>
+                    <br><br><br>
                     <p class="p-quote"><?= lang('Horgolni, vagy nem horgolni: ez itt a kérdés.') ?></p>
                     <br>
                     <div class="quote-container">

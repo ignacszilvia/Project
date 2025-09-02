@@ -16,6 +16,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/project/backend/lang.php';
     ?>
 
     <script src="/project/scripts/sidebar_toggle.js"></script>
+    <script src="/project/scripts/sort_table.js"></script>
 </head>
 <body onload="Betolt()">
     <div class="page_container">
@@ -28,6 +29,10 @@ require $_SERVER['DOCUMENT_ROOT'] . '/project/backend/lang.php';
                     <img src="/project/images/yarn2.png" class="image-center">
                     
                     <h2><?= lang('Fonaladatbázis') ?></h2>
+
+                    <a href="/project/add_yarn.php" class="button-link"><?= lang('Fonal hozzáadása') ?></a>
+
+                    <br><br><br>
 
                     <div id="table"></div>
 

@@ -10,15 +10,15 @@ require $_SERVER['DOCUMENT_ROOT'] . '/project/backend/lang.php';
 $sql = "SELECT id, brand, variety FROM yarns";
 $result = $conn->query($sql);
 
-
 ?>
 
 <!DOCTYPE html>
 <head>
 </head>
 <body>
-    <table>
-    <th><?=lang('Márka')?></th><th><?=lang('Fajta')?></th>
+    <table id="table">
+    <th onclick=sortTable(0)><?=lang('Márka')?></th>
+    <th onclick=sortTable(1)><?=lang('Fajta')?></th>
     <?php
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {

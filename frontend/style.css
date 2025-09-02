@@ -924,3 +924,25 @@ footer {
 .list {
   text-align: left;
 }
+
+/* ADD YARN */
+
+.yarn_add {
+  display: inline-block;
+  width: 250px;
+  border: 2px solid rgb(184, 167, 209);
+  border-radius: 10px;
+  background: rgb(247, 247, 247);
+  padding: 7px;
+  margin: 10px;
+  font-family: 'League Spartan';
+  font-size: 1em;
+}
+
+.new_brand_input {
+  display: none;
+}
+
+.new_brand {
+  display: inline-block;
+}

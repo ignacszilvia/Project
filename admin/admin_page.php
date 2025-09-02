@@ -60,6 +60,7 @@ $stmt->close();
 	?>
 
     <script src="/project/scripts/sidebar_toggle.js"></script>
+    <script src="/project/scripts/sort_table.js"></script>
     
 </head>
 <body>
@@ -74,13 +75,13 @@ $stmt->close();
                     <h2><?= lang('Felhasználók listája') ?></h2>
                     <br>
                     <div class="table">
-                         <table>
+                         <table id="table">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th><?= lang('Felhasználónév') ?></th>
-                                    <th>E-mail</th>
-                                    <th><?= lang('Jogosultság') ?></th>
+                                    <th onclick=sortTable(0)>ID</th>
+                                    <th onclick=sortTable(1)><?= lang('Felhasználónév') ?></th>
+                                    <th onclick=sortTable(2)>E-mail</th>
+                                    <th onclick=sortTable(3)><?= lang('Jogosultság') ?></th>
                                     <th><?= lang('Műveletek') ?></th>
                                 </tr>
                             </thead>
