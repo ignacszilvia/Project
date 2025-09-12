@@ -24,8 +24,8 @@ if (isset($_SESSION['rights'])) {
             <a class="footer_link" href="/project/footer/about_us.php"><?= lang('Rólunk') ?></a>
              | 
             <a class="footer_link" href="/project/footer/faq.php"><?= lang('GYIK') ?></a>
-             | 
-            <a class="footer_link" href="/project/footer/terms.php"><?= lang('Felhasználási feltételek') ?></a>
+            <!-- | 
+            <a class="footer_link" href="/project/footer/terms.php"><?= lang('Felhasználási feltételek') ?></a>-->
         </div>
     </footer>
     

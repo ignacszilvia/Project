@@ -1,5 +1,5 @@
 // Ezzel funkcióval feldob egy dobozt a törlés megerősítéséshez.
 
-function ConfirmDelete() {
-    return confirm("Biztosan ki akarod törölni?");
+function confirmDelete() {
+    return confirm(lang('Biztosan ki akarod törölni?'));
     }

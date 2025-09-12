@@ -7,7 +7,7 @@
 require $_SERVER['DOCUMENT_ROOT'] . '/project/backend/config.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/project/backend/lang.php';
 
-$message = '';
+$error_message = '';
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -18,13 +18,13 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Hibaüzenetek kiíratása.
     if (empty($username) || empty($mail) || empty($pass)) {
-        $message = lang('Kérjük töltse ki az összes mezőt.');
+        $error_message = lang('Kérjük töltsd ki az összes mezőt.');
     } elseif (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-        $message = lang('Kérjük érvényes e-mail címet adjon meg.');
+        $error_message = lang('Kérjük érvényes e-mail címet adjon meg.');
     } elseif (strlen($username) < 8 || strlen($username) > 30) {
-        $message = lang('A felhasználónévnek 8 és 30 karakter között kell lennie.');
+        $error_message = lang('A felhasználónévnek 8 és 30 karakter között kell lennie.');
     } elseif (strlen($pass) < 8) {
-        $message = lang('A jelszónak legalább 8 karakter hosszúnak kell lennie.');
+        $error_message = lang('A jelszónak legalább 8 karakter hosszúnak kell lennie.');
     } else {
 
         //  Speciális karaktereket HTML entitásokká alakítja át.
@@ -38,7 +38,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt_check_user->store_result();
 
         if($stmt_check_user->num_rows > 0) {
-            $message = lang('Ez a felhasználónév már foglalt!');
+            $error_message = lang('Ez a felhasználónév már foglalt!');
             $stmt_check_user->close();
         } else {
             $stmt_check_user->close();
@@ -50,7 +50,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt_check_mail->store_result();
 
             if($stmt_check_mail->num_rows > 0) {
-                $message = lang('Ez az e-mail cím már használatban van!');
+                $error_message = lang('Ez az e-mail cím már használatban van!');
                 $stmt_check_mail->close();
             } else {
                 $stmt_check_mail->close();
@@ -66,7 +66,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
                     header('Location: /project/index.php');
                     exit();
                 } else {
-                    $message = lang('A regisztráció sikertelen. Próbáld újra!');
+                    $error_message = lang('A regisztráció sikertelen. Próbáld újra!');
                 }
                 $stmt_insert->close();
             }
@@ -113,7 +113,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <br>
                          <div>
                             <p>
-                                <?php echo $message; ?>
+                                <?php
+                                    if (!empty($error_message)) {
+                                        echo htmlspecialchars($error_message);
+                                    }
+                                ?>
                             </p>
                         </div>
                         <div id="showpassword">

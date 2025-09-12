@@ -22,7 +22,7 @@ $lang = [
     'Nyelv'=>'Language',
     'Főoldal'=>'Home',
     'Rólunk'=>'About',
-    'GYIK!'=>'FAQ!',
+    'GYIK'=>'FAQ',
     'Felhasználási feltételek'=>'Terms of Use',
     'Hátteret készítette:'=>'Background by',
     'Logót készítette:'=>'Logo by',
@@ -79,61 +79,55 @@ $lang = [
     'Nem sikerült hozzáadni.'=>'Failed to add yarn.',
     'Adatbázis kapcsolat megszakadt.'=>'Database connection failed.',
     'Kérjük töltsd ki az összes mezőt.'=>'Please fill in all fields.',
+    'Biztosan ki akarod törölni?'=>'Are you sure you want to delete this?',
     
 
-    
-    /* 
-    'Az Ön fiókja tiltva van.'=>'',
-    'Hibás e-mail vagy jelszó!'=>'',
-    'Kérjük töltse ki az összes mezőt.'=>'',
-    'Kérjük érvényes e-mail címet adjon meg.'=>'',
-    'A felhasználónévnek 8 és 30 karakter között kell lennie.'=>'',
-    'A jelszónak legalább 8 karakter hosszúnak kell lennie.'=>'',
-    'Ez az e-mail cím már használatban van!'
-    'Sikeres regisztráció! Most már bejelentkezhetsz.'
-    'A regisztráció sikertelen. Próbáld újra!'
-    'Ez a felhasználónév már foglalt!'
-    'Ez az e-mail cím már használatban van!'
-    'Sikeres módosítás!'
-    'A megadott jelszó helytelen.
-    'Az új jelszavak nem egyeznek.'
-    'Jelszó sikeresen megváltoztatva!'
-    'Hiba történt a jelszó módosítása közben.'
-    'Nincs jogosultságod vagy nem vagy bejelentkezve!'
-    'Legfeljebb 5 kép tölthető fel egyszerre.'
-    'A fájl nem egy kép.'
-    'A fájl túl nagy!'
-    'Csak JPG, JPEG, PNG és GIF fájlok engedélyezettek.'
-    'Hiba történt a fájl feltöltésekor.'
-    'Hiba történt az új projekt hozzáadása során.'
-    'Érvénytelen projekt azonosító megadva.'
-    'Hiba történt a projekt frissítésekor.'
-    'A felhasználó nem található!'
-    'Érvénytelen felhasználói azonosító!'
-    'A felhasználónév és az e-mail mező nem lehet üres!'
-    'Érvénytelen jogosultsági érték!'
-    'Az adatok sikeresen frissítve!'
-    'Hiba történt az adatok frissítése során!'
-    'A felhasználó nem található!'
-    'Az adatok sikeresen frissítve!'
-    'Hiba történt az adatok frissítése során!'
-    'Érvénytelen felhasználói azonosító!'=>'Invalid user ID!'
-    'A bevitt adatok érvénytelenek!'=>'Invalid input data!
-    'Ez az e-mail cín vagy felhasználónév már használatban van'=>'Username or email already exists for another user.'
-    'A felhasználói profil sikeresen frissítve!'=>'User profile updated successfully!'
-    'Nem sikerült frissíteni a felhasználót, vagy nem történt módosítás.'=>'Failed to update user or no changes were made.'
-    'Felhasználó nem található.'=>'User not found.'
-    'A felhasználó sikeresen kitiltva.'
-    'Hiba történt a felhasználó kitiltása során: '
-    'Érvénytelen felhasználói azonosító.'
-    'Nem tilthatod ki saját magadat.'
+    'Az Ön fiókja tiltva van.'=>'Your account is banned.',
+    'Hibás e-mail vagy jelszó!'=>'Wrong e-mail or password!',
+    'Kérjük érvényes e-mail címet adjon meg.'=>'Please enter a valid email address.',
+    'A felhasználónévnek 8 és 30 karakter között kell lennie.'=>'The username must be between 8 and 30 characters.',
+    'A jelszónak legalább 8 karakter hosszúnak kell lennie.'=>'The password must be at least 8 characters long.',
+    'Ez az e-mail cím már használatban van!'=>'This email address is already in use!',
+    'Sikeres regisztráció! Most már bejelentkezhetsz.'=>'Signed up successfully! You can now sign in.',
+    'A regisztráció sikertelen. Próbáld újra!'=>'Sign up failed. Please try again!',
+    'Ez a felhasználónév már foglalt!'=>'This username is taken!',
+    'Ez az e-mail cím már használatban van!'=>'this e-mail is already in use!',
+    'Sikeres módosítás!'=>'Successfully changed!',
+    'A megadott jelszó helytelen.'=>'The password you entered is incorrect.',
+    'Az új jelszavak nem egyeznek.'=>'The passwords do not match.',
+    'Jelszó sikeresen megváltoztatva!'=>'Password successfully changed!',
+    'Hiba történt a jelszó módosítása közben.'=>'An error occurred while changing the password.',
+    'Nincs jogosultságod vagy nem vagy bejelentkezve!'=>'You have no authorization or you are not logged in!',
+    'Legfeljebb 5 kép tölthető fel egyszerre.'=>'Up to 5 images can be uploaded at a time.',
+    'A fájl nem egy kép.'=>'The file is not an image.',
+    'A fájl túl nagy!'=>'The file is too big!',
+    'Csak JPG, JPEG, PNG és GIF fájlok engedélyezettek.'=>'Only JPG, JPEG, PNG, and GIF files are allowed.',
+    'Hiba történt a fájl feltöltésekor.'=>'An error occurred while uploading the file.',
+    'Hiba történt az új projekt hozzáadása során.'=>'An error occurred while adding a new project.',
+    'Érvénytelen projekt azonosító megadva.'=>'Invalid project ID used.',
+    'Hiba történt a projekt frissítésekor.'=>'An error occurred while updating the project.',
+    'A felhasználó nem található!'=>'User not found!',
+    'Érvénytelen felhasználói azonosító!'=>'Invalid user ID!',
+    'A felhasználónév és az e-mail mező nem lehet üres!'=>'The username and email field must not be empty!',
+    'Érvénytelen jogosultsági érték!'=>'Invalid value!',
+    'Az ok sikeresen frissítve!'=>'Data updated successfully!',
+    'Hiba történt az adatok frissítése során!'=>'An error occurred while updating the data!',
+    'A bevitt adatok érvénytelenek!'=>'Invalid input data!',
+    'Ez az e-mail cín vagy felhasználónév már használatban van'=>'Username or email already exists for another user.',
+    'A felhasználói profil sikeresen frissítve!'=>'User profile updated successfully!',
+    'Nem sikerült frissíteni a felhasználót, vagy nem történt módosítás.'=>'Failed to update user or no changes were made.',
+    'Felhasználó nem található.'=>'User not found.',
+    'A felhasználó sikeresen kitiltva.'=>'User successfully banned.',
+    'Hiba történt a felhasználó kitiltása során: '=>'An error occurred while banning the user:',
+    'Nem tilthatod ki saját magadat.'=>'You cant ban yourself.',
 
-    'Érvénytelen projekt- vagy felhasználói azonosító megadva.'=>'Invalid project or user ID provided.'
-    'Adatbázishiba. Kérjük, próbálja újra később.'=>'Database error. Please try again later.'
-    'Érvénytelen felhasználói azonosító.'=>'Invalid user ID.'
-    'A saját fiókját nem törölheti.'=>'You cannot delete your own account.'
-    'A felhasználó sikeresen törölve.'=>'User successfully deleted.'
-    */
+    'Érvénytelen projekt- vagy felhasználói azonosító megadva.'=>'Invalid project or user ID provided.',
+    'Adatbázishiba. Kérjük, próbálja újra később.'=>'Database error. Please try again later.',
+    'Érvénytelen felhasználói azonosító.'=>'Invalid user ID.',
+    'A saját fiókját nem törölheti.'=>'You cannot delete your own account.',
+    'A felhasználó sikeresen törölve.'=>'User successfully deleted.',
+
+
     'Üdvözlünk a GildedHook weboldalon! Ezt az oldalt egyetlen céllal hoztuk létre: hogy segítsen lejegyezni és kezelni horgolási projektjeidet. Tiszta és intuitív platformot kínálunk, ahol könnyedén rögzíthetsz mindent a folyamatban lévő és a befejezett munkáidról. A fonalaktól és horgolótűktől a projektfotókig és a személyes jegyzetekig, weboldalunk segít a projektek egyszerű dokumentálásában és rendszerezésében. A célunk, hogy egy gyönyörű, rendszerezett módot adjunk a kezedbe, így kevesebb időt tölthetsz a régi jegyzetek keresésével, és többet azzal, amit szeretsz.'=>'Welcome to GildedHook! We created this site with a single purpose: to help you log and manage your crochet projects. We offer a clean and intuitive platform where you can easily record everything about your works-in-progress and finished items. From yarn and hook details to project photos and personal notes, our website helps you document and organize your projects with ease. Our goal is to give you a beautiful, organized way to keep track of your work, so you can spend less time searching for old notes and more time doing what you love.',
 
     'Általános kérdések'=>'General Questions',

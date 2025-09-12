@@ -46,8 +46,6 @@ require $_SERVER['DOCUMENT_ROOT'] . '/project/backend/lang.php';
     include $_SERVER['DOCUMENT_ROOT'] . '/project/frontend/footer.php';
     ?>
 
-    <noscript>Free cookie consent management tool by <a href="https://www.termsfeed.com/">TermsFeed Generator</a></noscript>
-
 </body>
 </html>
  

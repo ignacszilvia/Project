@@ -6,46 +6,45 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 require $_SERVER['DOCUMENT_ROOT'] . '/project/backend/config.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/project/backend/lang.php';
 
-// Check if a user is logged in
 if (!isset($_SESSION['uid'])) {
     header('Location: /project/login.php?error=no_permission');
     exit();
 }
 
-// Get the current user's ID from the session
 $uid = $_SESSION['uid'];
 
-// Get the current user's username
-$stmt_user = $conn->prepare("SELECT username FROM users WHERE uid = ?");
-$stmt_user->bind_param("i", $uid);
-$stmt_user->execute();
-$user_result = $stmt_user->get_result();
-$user_data = $user_result->fetch_assoc();
-$stmt_user->close();
-$current_username = $user_data['username'] ?? 'Ismeretlen felhasználó';
-
-// Sorting and searching logic is the same as the admin page
+// A rendezés és a kereséshez tartozó paramáterek
 $sort_by = $_GET['sort_by'] ?? 'name';
 $search_query = htmlspecialchars($_GET['search_query'] ?? '');
 $search_filter = $_GET['search_filter'] ?? 'name';
 
+// A rendezéshez és a kereséshez szükséges adatok lekérése az adatbázisból.
 $sql = "SELECT p.id, p.name, p.yarn, p.hook, p.image, p.description FROM projects AS p";
 
+// Ha a felhasználó fonalak szerint keres akkor belső csatlakozást hoz létre a yarns táblával hogy márka és fajta szerint együtt lehessen keresni
 if (!empty($search_query) && $search_filter === 'yarn') {
     $sql .= " INNER JOIN yarns AS y ON p.yarn = y.id";
 }
 
-// The key change: filter by the logged-in user's UID
+// Csak a bejelentkezett felhasználókhoz tartozó projekteket jeleníti meg
+// Az sql változót kiegészíti ezzel
 $sql .= " WHERE p.uid = ?";
 $params = [$uid];
 $param_types = "i";
 
+// A switch segtíségével átláthatóbbak a szűrési és rendezési feltételek. 
+// A search_query változó tartalmazza a felhasználó által beírt keresési kifejezést
 if (!empty($search_query)) {
     switch ($search_filter) {
         case 'name':
+            // Az sql változót tovább egészíti ki ezekkel a keresési feltételekkel
+            // Az AND hozzáadja melyik oszlopban történik meg a keresés
             $sql .= " AND name LIKE ?";
+            // Ez lehetővé teszi hogy a kifejezés a szó bármelyik részén megtörténjen
             $params[] = "%" . $search_query . "%";
+            // Jelzi hogy ez egy string
             $param_types .= "s";
+            // A végrehajtás befejeződik
             break;
         case 'hook':
             $sql .= " AND hook LIKE ?";
@@ -53,6 +52,7 @@ if (!empty($search_query)) {
             $param_types .= "s";
             break;
         case 'yarn':
+            // Mivel két oszlopban is keres ezért az OR feltételt használ
             $sql .= " AND (y.brand LIKE ? OR y.variety LIKE ?)";
             $params[] = "%" . $search_query . "%";
             $params[] = "%" . $search_query . "%";
@@ -64,6 +64,7 @@ if (!empty($search_query)) {
             $param_types .= "s";
             break;
         default:
+            // Ez akkor fut le ha érvénytelen értékkel rendelkezik a search_query változó
             $sql .= " AND name LIKE ?";
             $params[] = "%" . $search_query . "%";
             $param_types .= "s";
@@ -73,6 +74,7 @@ if (!empty($search_query)) {
 
 switch ($sort_by) {
     case 'id_desc':
+        // Az sql változót tovább egészíti ki ezekkel a keresési feltételekkel
         $sql .= " ORDER BY p.id DESC";
         break;
     case 'id_asc':
@@ -84,17 +86,16 @@ switch ($sort_by) {
         break;
 }
 
+// Előkészíti a lekérdezést
 $stmt = $conn->prepare($sql);
 if ($stmt === false) {
     die("Error preparing statement: " . $conn->error);
 }
-
 $stmt->bind_param($param_types, ...$params);
 $stmt->execute();
 $result = $stmt->get_result();
 $noprojects = lang('Nincs projekt hozzáadva');
 $projects = $result->fetch_all(MYSQLI_ASSOC);
-
 $stmt->close();
 $conn->close();
 
@@ -115,7 +116,6 @@ $conn->close();
         <main class="page_content">
             <div class="main_body">
                 <?php
-                // Note: User sidebar would be different from admin sidebar
                 include $_SERVER['DOCUMENT_ROOT'] . '/project/frontend/sidebar.php';
                 ?>
                 <div class="main_container">
@@ -126,7 +126,7 @@ $conn->close();
                         </a>
                     </h2>
                     <div class="search-container">
-                        <form method="GET" action="">
+                        <form method="GET">
                             <input type="text" placeholder="<?= lang('Projekt keresése...') ?>" name="search_query" value="<?= htmlspecialchars($_GET['search_query'] ?? '') ?>">
                             <select name="search_filter" class="select-search">
                                 <option value="name" <?= ($search_filter === 'name') ? 'selected' : '' ?>><?= lang('Név') ?></option>
@@ -139,9 +139,11 @@ $conn->close();
                     </div>
                     <br>
                     <div class="sort-container">
-                        <form method="GET" action="">
+                        <form method="GET">
+                            <!--A search_query-re azért van szükség hogy a keresésben talált elemek között jöjjön létre a szűrés (ha volt keresve). Ez segít megőrizni ezeket az elemeket.-->
                             <input type="hidden" name="search_query" value="<?= htmlspecialchars($_GET['search_query'] ?? '') ?>">
                             <input type="hidden" name="search_filter" value="<?= htmlspecialchars($_GET['search_filter'] ?? '') ?>">
+                            <!---->
                             <label for="sort_by"><?= lang('Rendezés:') ?></label>
                             <select name="sort_by" id="sort_by" class="select-sort" onchange="this.form.submit()">
                                 <option value="name" <?= (!isset($_GET['sort_by']) || $_GET['sort_by'] === 'name') ? 'selected' : '' ?>><?= lang('Név szerint') ?></option>
@@ -165,12 +167,15 @@ $conn->close();
                                 </div>
                                 <div>
                                     <?php
+                                    // A képek eléréi útvonalát stringként van tárolva
                                     $image_paths = array_filter(explode(',', $row['image']));
                                     
+                                    // Ha található benne kép akkor véletlenszerűen kiválaszt egy képet
                                     if (!empty($image_paths)) {
                                         $random_image_path = $image_paths[array_rand($image_paths)];
                                         $image_source = trim($random_image_path);
                                     } else {
+                                        // Ha nincs kép ezt az alapméretezett képet jeleníti meg a projekt
                                         $image_source = '/project/images/no-file-found-yarn-ball.png';
                                     }
                                     ?>

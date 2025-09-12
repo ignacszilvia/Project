@@ -13,6 +13,7 @@ if (!isset($_SESSION['uid']) || $_SESSION['rights'] != 101) {
 
 $uid = $_SESSION['uid'];
 
+$error_message = '';
 $message = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -26,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt_check_user->store_result();
 
     if ($stmt_check_user->num_rows > 0) {
-        $message = lang('Ez a felhasználónév már foglalt!');
+        $error_message = lang('Ez a felhasználónév már foglalt!');
     } else {
         // Leellenőrzi hogy ezzel az e-maillel már regisztráltak-e.
         $stmt_check_mail = $conn->prepare("SELECT uid FROM users WHERE mail = ? AND uid != ?");
@@ -35,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt_check_mail->store_result();
 
         if ($stmt_check_mail->num_rows > 0) {
-            $message = lang('Ez az e-mail cím már használatban van!');
+            $error_message = lang('Ez az e-mail cím már használatban van!');
         } else {
             // Az adatok frissítése az adatbázisban.
             $stmt_update = $conn->prepare("UPDATE users SET username = ?, mail = ? WHERE uid = ?");
@@ -44,13 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // felhasználónév frissítése a sessionben.
             $_SESSION['username'] = $username;
-            //Üzenet elküldése sikeres regisztráció után.
-            $_SESSION['message'] = lang('Sikeres módosítás!');
-
-            // Visszirányít a felhasználói profil oldalra.
-            header("Location: /project/user_profile.php");
-            // Rögtön lezárja a scripter.
-            exit;
+            $message = lang('Sikeres módosítás!');
         }
         $stmt_check_mail->close();
     }
@@ -98,9 +93,15 @@ $stmt_get_data->close();
                         </div>
                         <br>
                         <div>
-                            <?php if (!empty($message)): ?>
-                            <p><?= htmlspecialchars($message) ?></p>
-                            <?php endif; ?>
+                            <?php
+                                if (!empty($error_message)) {
+                                    echo htmlspecialchars($error_message);
+                                }
+
+                                if (!empty($message)) {
+                                    echo htmlspecialchars($message);
+                                }
+                            ?>
                         </div>
                         <br>
                         <div>

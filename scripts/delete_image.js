@@ -1,8 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
 
+    // Kiválasztja ezekkel az id-vel ellátott elemeket.
     const deletedImagesInput = document.getElementById('deleted-images-input');
     const imageContainer = document.getElementById('existing-images-container');
 
+    // az imageContainer változóhoz hozzáad egy klikkeseményt
     imageContainer.addEventListener('click', function(event) {
         if (event.target.classList.contains('delete-image-btn')) {
             const imageItem = event.target.closest('.image-preview-item');

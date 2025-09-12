@@ -48,12 +48,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt_update->bind_param("si", $new_hashed_password, $uid);
 
         if ($stmt_update->execute()) {
-            // Set a session message and redirect to the profile page.
-            $_SESSION['message'] = lang("Jelszó sikeresen megváltoztatva!");
-            header('Location: /project/user_profile.php');
-            exit; // Exit after redirection is crucial for security.
+            $message = lang('Sikeres módosítás!');
         } else {
-            // Set a database error message.
             $error_message = lang("Hiba történt a jelszó módosítása közben.");
             error_log("Password change failed for UID: " . $uid . " - " . $conn->error);
         }
@@ -99,9 +95,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </div>
                         <br>
                         <div>
-                            <?php if (!empty($error_message)): ?>
-                            <p><?= htmlspecialchars($error_message) ?></p>
-                            <?php endif; ?>
+                            <?php
+                                if (!empty($error_message)) {
+                                    echo htmlspecialchars($error_message);
+                                }
+
+                                if (!empty($message)) {
+                                    echo htmlspecialchars($message);
+                                }
+                            ?>
                         </div>
                         <div id="showpassword">
                             <input id="checkbox" type="checkbox" onclick="togglePasswordVisibilityPage()">

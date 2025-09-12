@@ -595,7 +595,7 @@ td {
     margin: 0;
   }
 
-  .sidebar.active {
+  .active {
     transform: translateX(0);
   }
 
@@ -662,6 +662,13 @@ footer {
   margin: auto;
 }
 
+.style-box {
+  display: none;
+}
+
+.visible {
+  display: block;
+}
 
 /*TEXT EFFECT 1*/
 
@@ -783,19 +790,13 @@ footer {
   animation: flip 2s;
   animation-delay: calc(.2s * var(--i))
 }
+
 @keyframes flip {
   0%,80% {
     transform: rotateY(360deg) 
   }
 }
 
-.style-box {
-  display: none;
-}
-
-.visible {
-  display: block;
-}
 
 
 /*SITE CONTENT CSS*/

@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Sep 02, 2025 at 10:53 AM
--- Server version: 9.1.0
--- PHP Version: 8.3.14
+-- Gép: 127.0.0.1
+-- Létrehozás ideje: 2025. Aug 30. 09:08
+-- Kiszolgáló verziója: 10.4.28-MariaDB
+-- PHP verzió: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,82 +18,74 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `crochetproject`
+-- Adatbázis: `crochetproject`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `projects`
+-- Tábla szerkezet ehhez a táblához `projects`
 --
 
-DROP TABLE IF EXISTS `projects`;
-CREATE TABLE IF NOT EXISTS `projects` (
-  `uid` int NOT NULL,
-  `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_hungarian_ci NOT NULL,
-  `pattern` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_hungarian_ci DEFAULT NULL,
-  `yarn` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_hungarian_ci DEFAULT NULL,
+CREATE TABLE `projects` (
+  `uid` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `pattern` varchar(1000) DEFAULT NULL,
+  `yarn` varchar(255) DEFAULT NULL,
   `hook` decimal(10,0) DEFAULT NULL,
-  `description` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_hungarian_ci DEFAULT NULL,
-  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_hungarian_ci DEFAULT NULL,
+  `description` varchar(1000) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
   `start` date DEFAULT NULL,
-  `finish` date DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `Userid` (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=98 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
+  `finish` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
 
 --
--- Dumping data for table `projects`
+-- A tábla adatainak kiíratása `projects`
 --
 
 INSERT INTO `projects` (`uid`, `id`, `name`, `pattern`, `yarn`, `hook`, `description`, `image`, `start`, `finish`) VALUES
-(4, 95, 'Amigurumi', 'https://amigurumink.hu/', '110', 6, '', '/project/uploads/68b056ab58937_crochet-dinosaur-free-amigurumi-pattern-1-3734250398.jpg', '2025-08-09', NULL),
-(4, 96, 'Amigurumi', 'https://amigurumink.hu/', '134', 6, 'fsdfdsfdsf', '/project/uploads/68b075576f20d_crochet-dinosaur-free-amigurumi-pattern-1-3734250398.jpg,/project/uploads/68b075577116f_Cute-Crochet-Duck-Amigurumi-Free-Pattern11-1046517853.jpg', '2025-08-13', NULL),
-(4, 97, 'Hőmérséklet sál', 'https://www.foxandpinestitches.com/how-to-make-a-temperature-blanket-scarf/', '140', 6, '', '', '2025-09-10', NULL);
+(4, 95, 'Amigurumi', 'https://amigurumink.hu/', '110', 6, '', '/project/uploads/68b056ab58937_crochet-dinosaur-free-amigurumi-pattern-1-3734250398.jpg,/project/uploads/68b06c4122f23_Cute-Crochet-Duck-Amigurumi-Free-Pattern11-1046517853.jpg', '2025-08-09', NULL),
+(4, 96, 'Amigurumi', 'https://amigurumink.hu/', '134', 6, 'fsdfdsfdsf', '/project/uploads/68b075576f20d_crochet-dinosaur-free-amigurumi-pattern-1-3734250398.jpg,/project/uploads/68b075577116f_Cute-Crochet-Duck-Amigurumi-Free-Pattern11-1046517853.jpg', '2025-08-13', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Tábla szerkezet ehhez a táblához `users`
 --
 
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE IF NOT EXISTS `users` (
-  `uid` int NOT NULL AUTO_INCREMENT,
-  `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_hungarian_ci NOT NULL,
-  `mail` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_hungarian_ci NOT NULL,
-  `pass` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_hungarian_ci NOT NULL,
-  `regdatetime` datetime DEFAULT CURRENT_TIMESTAMP,
-  `rights` int DEFAULT '101',
-  PRIMARY KEY (`uid`),
-  UNIQUE KEY `mail` (`mail`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
+CREATE TABLE `users` (
+  `uid` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `mail` varchar(255) NOT NULL,
+  `pass` varchar(255) NOT NULL,
+  `regdatetime` datetime DEFAULT current_timestamp(),
+  `rights` int(11) DEFAULT 101
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
--- Dumping data for table `users`
+-- A tábla adatainak kiíratása `users`
 --
 
 INSERT INTO `users` (`uid`, `username`, `mail`, `pass`, `regdatetime`, `rights`) VALUES
 (4, '12345678', '1234@1234.hu', '$2y$10$6hWCaZD.zfz03SKtFkDdaOQ8S/I22TAYaE1OwpYwLHnrfIxQlJ9u6', '2025-08-14 14:55:24', 101),
-(11, 'ignacszilvia', 'ignac.szilvia@outlook.com', '$2y$10$jVe/78YmQ0tXLFAn.4k1U.L.oa.gMsmwQ4IyDPeWIjzvyIK30DF7q', '2025-08-19 14:22:11', 103);
+(11, 'ignacszilvia', 'ignac.szilvia@outlook.com', '$2y$10$jVe/78YmQ0tXLFAn.4k1U.L.oa.gMsmwQ4IyDPeWIjzvyIK30DF7q', '2025-08-19 14:22:11', 103),
+(34, 'ignac.szilvia', 'ignac.szilvia@gmail.com', '$2y$10$yQtUnY7k5zC5yTyBp/bRNONNmxYpA8vIJZLBY/YF3Vrullh8YTAOu', '2025-08-27 10:56:32', 101);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `yarns`
+-- Tábla szerkezet ehhez a táblához `yarns`
 --
 
-DROP TABLE IF EXISTS `yarns`;
-CREATE TABLE IF NOT EXISTS `yarns` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `brand` set('Drops','Alize','DMC','Kartopu','Nako','Wolans','Yarnart','Himalaya','Schachenmayr','Scheepjes','Lana Grossa','Vlna-Hep','Gründl','Red Heart','Malabrigo','Lion Brand') CHARACTER SET utf8mb4 COLLATE utf8mb4_hungarian_ci DEFAULT NULL,
-  `variety` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_hungarian_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=162 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
+CREATE TABLE `yarns` (
+  `id` int(11) NOT NULL,
+  `brand` set('Drops','Alize','DMC','Kartopu','Nako','Wolans','Yarnart','Himalaya','Schachenmayr','Scheepjes','Lana Grossa','Vlna-Hep','Gründl','Red Heart','Malabrigo') DEFAULT NULL,
+  `variety` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
 
 --
--- Dumping data for table `yarns`
+-- A tábla adatainak kiíratása `yarns`
 --
 
 INSERT INTO `yarns` (`id`, `brand`, `variety`) VALUES
@@ -253,9 +245,53 @@ INSERT INTO `yarns` (`id`, `brand`, `variety`) VALUES
 (155, 'Malabrigo', 'Lace'),
 (156, 'Malabrigo', 'Silkpaca'),
 (157, 'Malabrigo', 'Worsted'),
-(158, 'Malabrigo', 'Rios'),
-(160, 'Drops', 'Bomull-Lin'),
-(161, 'Lion Brand', 'Cotton Hemp');
+(158, 'Malabrigo', 'Rios');
+
+--
+-- Indexek a kiírt táblákhoz
+--
+
+--
+-- A tábla indexei `projects`
+--
+ALTER TABLE `projects`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `Userid` (`uid`);
+
+--
+-- A tábla indexei `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`uid`),
+  ADD UNIQUE KEY `mail` (`mail`);
+
+--
+-- A tábla indexei `yarns`
+--
+ALTER TABLE `yarns`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- A kiírt táblák AUTO_INCREMENT értéke
+--
+
+--
+-- AUTO_INCREMENT a táblához `projects`
+--
+ALTER TABLE `projects`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
+
+--
+-- AUTO_INCREMENT a táblához `users`
+--
+ALTER TABLE `users`
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+
+--
+-- AUTO_INCREMENT a táblához `yarns`
+--
+ALTER TABLE `yarns`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=159;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

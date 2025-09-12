@@ -97,8 +97,8 @@ $szerkesztes = lang('Szerkesztés');
                             echo "<p><b>$kezdes</b><br>{$row['start']}</p>";
                             echo "<p><b>$befejezes</b><br>{$row['finish']}</p>";
                             echo "<br>";
-                            echo "<a href='edit_project.php?id={$row['id']}' class='link'>$szerkesztes</a>";
-                            echo "<a href='backend/delete_project.php?id={$row['id']}' class='link' onclick='return ConfirmDelete();'>$torles</a>";
+                            echo "<a href='/project/edit_project.php?id={$row['id']}' class='link'>$szerkesztes</a>";
+                            echo "<a href='/project/backend/delete_project.php?id={$row['id']}' class='link' onclick='return confirmDelete();'>$torles</a>";
                             echo "</div>";
                         }
                     } else {

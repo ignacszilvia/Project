@@ -7,6 +7,11 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 require $_SERVER['DOCUMENT_ROOT'] . '/project/backend/config.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/project/backend/lang.php';
 
+if (!isset($_SESSION['uid']) || $_SESSION['rights'] != 101) {
+    header('Location: /project/index.php');
+    exit();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -17,8 +22,10 @@ require $_SERVER['DOCUMENT_ROOT'] . '/project/backend/lang.php';
 
     <script src="/project/scripts/sidebar_toggle.js"></script>
     <script src="/project/scripts/sort_table.js"></script>
+    <script src="/project/scripts/yarn_table_fetch.js"></script>
+    
 </head>
-<body onload="Betolt()">
+<body onload="loadYarnTable()">
     <div class="page_container">
         <main class="page_content">
             <div class="main_body">
@@ -34,9 +41,10 @@ require $_SERVER['DOCUMENT_ROOT'] . '/project/backend/lang.php';
 
                     <br><br><br>
 
-                    <div id="table"></div>
+                    <div id="yarns-table"></div>
 
                     <img src="/project/images/yarn2flipped.png" class="image-center">
+                </div>
             </div>
         </main>
     </div> 
@@ -44,24 +52,5 @@ require $_SERVER['DOCUMENT_ROOT'] . '/project/backend/lang.php';
     <?php
     include $_SERVER['DOCUMENT_ROOT'] . '/project/frontend/footer.php';
     ?>
-
-    <script>
-
-        async function Betolt() {
-            const url = "/project/yarn_table.php";
-
-            try {
-                const response = await fetch(url);
-                const text = await response.text();
-
-                document.getElementById("table").innerHTML = text;
-            } catch (error) {
-                console.error(error.message);
-            }
-        }
-
-
-    </script>
-
 </body>
 </html>

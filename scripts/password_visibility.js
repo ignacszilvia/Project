@@ -1,4 +1,4 @@
-// Átállítja a jelszó láthatóságát, azzal hogy í típust jelszóról, szövegre változtatja.
+// Átállítja a jelszó láthatóságát, azzal hogy a típust jelszóról, szövegre változtatja.
 
 function togglePasswordVisibility() {
     const x = document.getElementById("pass");

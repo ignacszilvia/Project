@@ -25,7 +25,7 @@ if ($conn) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Leellenőrzi hogy a márka és a fajta mező nem üres-e
+    // Leellenőrzi hogy a márka és a fajta mezőlétezik-e, valamint hogy nem üres-e
     if (isset($_POST['brand']) && isset($_POST['variety']) && !empty($_POST['brand']) && !empty($_POST['variety'])) {
         $brand = $_POST['brand'];
         $variety = $_POST['variety'];
@@ -42,17 +42,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmt->bind_param("ss", $brand, $variety);
 
             if ($stmt->execute()) {
-                $error_message = 'Fonal sikeresen hozzáadva!';
+                $error_message = lang('Fonal sikeresen hozzáadva!');
             } else {
-                $error_message = 'Nem sikerült hozzáadni.';
+                $error_message = lang('Nem sikerült hozzáadni.');
             }
 
             $stmt->close();
         } else {
-            $error_message = 'Adatbázis kapcsolat megszakadt.';
+            $error_message = lang('Adatbázis kapcsolat megszakadt.');
         }
     } else {
-        $error_message = 'Kérjük töltsd ki az összes mezőt.';
+        $error_message = lang('Kérjük töltsd ki az összes mezőt.');
     }
 }
 ?>
@@ -63,19 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     include $_SERVER['DOCUMENT_ROOT'] . '/project/frontend/header.php';
     ?>
     <script src="/project/scripts/sidebar_toggle.js"></script>
-    <script>
-        function toggleNewBrandInput() {
-            var selectBox = document.getElementById('brand');
-            var newBrandInput = document.getElementById('new_brand_name');
-            if (selectBox.value === 'new_brand') {
-                newBrandInput.style.display = 'block';
-                newBrandInput.setAttribute('required', 'required');
-            } else {
-                newBrandInput.style.display = 'none';
-                newBrandInput.removeAttribute('required');
-            }
-        }
-    </script>
+    <script src="/project/scripts/new_brand_input.js"></script>
 </head>
 <body>
     <div class="page_container">
@@ -90,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <form action="add_yarn.php" method="post">
                         <div class="loginlabel">
                             <label for="brand"><?= lang('Márka') ?></label><br>
-                            <select id="brand" name="brand" class="yarn_add" required onchange="toggleNewBrandInput()">
+                            <select id="brand" name="brand" class="yarn_add" required onchange="toggleNewBrandInput()"> <!-- Az onchange funkcióval megváltoztatjuk a html elemet, ebben az esetben a Válassz márkát lenyló menüt. -->
                                 <option value=""><?= lang('Válassz márkát') ?></option>
                                 <?php foreach ($brands as $existing_brand): ?>
                                     <option value="<?= htmlspecialchars($existing_brand) ?>">
@@ -109,9 +97,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <input type="text" id="variety" name="variety" placeholder="<?= lang('Fajta') ?>" required><br>
                         </div>
                         <br>
-                        <?php if (!empty($error_message)): ?>
-                        <p><?= htmlspecialchars($error_message) ?></p>
-                        <?php endif; ?>
+                                    
+                        <p>
+                            <?php
+                                if (!empty($error_message)) {
+                                    echo htmlspecialchars($error_message);
+                                }
+                            ?>
+                        </p>
                         <br>
                         <button type="submit" class="button"><?= lang('Fonal hozzáadása') ?></button>
                         <br><br>

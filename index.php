@@ -1,6 +1,6 @@
 <?php
 
-// A belépő adatok eltűárolása miatt kell ezt meghívni
+// A belépő adatok eltárolása miatt kell ezt meghívni
 session_start();
 
 // A kapcsolat felállítása a szerverrel.
@@ -24,8 +24,8 @@ $error_message = null;
 // Ha a bejelentkezés megtörténik, ez a folyamat beindul.
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Megnézi hogy az e-mail és a jelszó mezők ki vannak-e töltve.
-    if (!isset($_POST['mail']) || empty($_POST['mail']) || !isset($_POST['pass']) || empty($_POST['pass'])) {
-        $error_message = lang('Kérjük töltse ki az összes mezőt.');
+    if (empty($_POST['mail']) || empty($_POST['pass'])) {
+        $error_message = lang('Kérjük töltsd ki az összes mezőt.');
     } else {
         // Összegyűjti a bevitt adatokat és beolvassa ezeknek a mezőknek az értékét.
         $mail = htmlspecialchars($_POST['mail']);
@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $error_message = lang('Hibás e-mail vagy jelszó!');
             }
         } else { 
-            //Hibaüzenet
+            // Hibaüzenet
             $error_message = lang('Hibás e-mail vagy jelszó!');
         }
     }
@@ -109,7 +109,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <br>
                             <div>
                                 <p>
-                                        <?php echo $error_message; ?>
+                                    <?php
+                                        if (!empty($error_message)) {
+                                            echo htmlspecialchars($error_message);
+                                        }
+                                    ?>
                                 </p>
                             </div>
                             <div id="showpassword">

@@ -17,7 +17,7 @@ if (!isset($_SESSION['uid']) || $_SESSION['rights'] != 101) {
 // Lekéri a bejelentkezett felhasználó id-át.
 $uid = $_SESSION['uid'];
 
-// Lekéri a bejelentkezett felhasználó adatait.
+// Lekéri a bejelentkezett felhasználó adatait, hogy a felhasználónevet meg tudja jeleníteni az üdvözlő szövegben
 $stmt_get_data = $conn->prepare("SELECT username FROM users WHERE uid = ?");
 $stmt_get_data->bind_param("i", $uid);
 $stmt_get_data->execute();

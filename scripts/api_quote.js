@@ -10,9 +10,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     async function getQuote() {
         try {
             const response = await fetch(apiURL);
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
             const data = await response.json();
 
             // A kijelölt elemek frissítése
