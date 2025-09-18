@@ -13,6 +13,7 @@ if (!isset($_SESSION['uid']) || $_SESSION['rights'] != 101) {
 }
 
 $error_message = null;
+$message = null;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 

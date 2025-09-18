@@ -17,7 +17,7 @@ if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
 
 $id = intval($_GET['id']);
 
-// Fetch current project data first
+// Jelenlegi project adatainak lekérése
 $sql = "SELECT id, name, pattern, yarn, hook, description, image, start, finish FROM projects WHERE id=?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $id);
@@ -28,10 +28,10 @@ if ($result->num_rows === 0) {
     exit('Nincs projekt hozzáadva!');
 }
 $row = $result->fetch_assoc();
-$current_yarn_id = $row['yarn']; // Get the yarn ID from the project
+$current_yarn_id = $row['yarn'];
 $existing_image_paths = !empty($row['image']) ? explode(',', $row['image']) : [];
 
-// Fetch brand of the currently selected yarn
+// Lekérdezi a kiválasztott fonal márkáját valamin feltölti a lenyíló menüt a különböző márkákkal
 $current_yarn_brand_sql = "SELECT brand FROM yarns WHERE id=?";
 $current_yarn_brand_stmt = $conn->prepare($current_yarn_brand_sql);
 $current_yarn_brand_stmt->bind_param("i", $current_yarn_id);
@@ -47,18 +47,17 @@ $current_yarn_brand_stmt->close();
 if (isset($_POST['update_project'])) {
     $name = htmlspecialchars($_POST['name']);
     $pattern = htmlspecialchars($_POST['pattern']);
-    // Updated to use yarn_id from the form
     $yarn_id = !empty($_POST['variety']) ? htmlspecialchars($_POST['variety']) : NULL;
     $hook = htmlspecialchars($_POST['hook']);
     $description = htmlspecialchars($_POST['description']);
     $start = !empty($_POST['start']) ? htmlspecialchars($_POST['start']) : NULL;
     $finish = !empty($_POST['finish']) ? htmlspecialchars($_POST['finish']) : NULL;
 
-    // Define the absolute and relative paths for uploads
+    // Abszolút és relatív hely definiálása
     $upload_dir_abs = $_SERVER['DOCUMENT_ROOT'] . '/project/uploads/';
     $upload_dir_rel = '/project/uploads/';
 
-    // Fetch existing image paths from the database
+    // Lekérdezi a képek útvonalát
     $current_image_paths_sql = "SELECT image FROM projects WHERE id=?";
     $current_stmt = $conn->prepare($current_image_paths_sql);
     $current_stmt->bind_param("i", $id);
@@ -66,39 +65,38 @@ if (isset($_POST['update_project'])) {
     $current_result = $current_stmt->get_result();
     $current_row = $current_result->fetch_assoc();
 
-    // Correctly handle the case where the image string is empty
+    // Ha nincsen benne kép
     $existing_image_paths_db = !empty($current_row['image']) ? explode(',', $current_row['image']) : [];
 
-    // Handle deleted images
+    // Törölendő elemek listája
     $deleted_images = $_POST['deleted_images'] ?? '';
     $deleted_image_paths = !empty($deleted_images) ? explode(',', $deleted_images) : [];
     
-    // Use a foreach loop to delete each file from the server
+    // Végigmegy az összes képen és kirtörli a kiválasztott képeket
     foreach ($deleted_image_paths as $deleted_path) {
         $trimmed_path = trim($deleted_path);
         if (!empty($trimmed_path)) {
-            // Construct the full server path for deletion
             $file_to_delete = $upload_dir_abs . basename($trimmed_path);
             
-            // Check if the file exists before attempting to delete it
+            // Leellenőrzi hogy a fájlok léteznek-e törlés előtt
             if (file_exists($file_to_delete)) {
                 unlink($file_to_delete);
             }
         }
     }
 
-    // Remove deleted images from the main array
+    // A kitörölt fájlokat kitölri a tömbből
     $image_paths_to_keep = array_diff($existing_image_paths_db, $deleted_image_paths);
 
-    // Handle new image uploads
+    // Új fájlok feltöltése
     if (!empty($_FILES['image']['name'][0])) {
         foreach ($_FILES['image']['name'] as $key => $file_name) {
             if ($_FILES['image']['error'][$key] == 0) {
                 $unique_file_name = uniqid() . '_' . basename($file_name);
                 
-                // Use the absolute path for the move operation
+                // Az abszolút utat használja a feltöltéshez
                 $target_file_abs = $upload_dir_abs . $unique_file_name;
-                // Use the relative path for database storage
+                // A relatív utat az adatbázisban való tároláshoz használja 
                 $target_file_rel = $upload_dir_rel . $unique_file_name;
                 
                 $imageFileType = strtolower(pathinfo($target_file_abs, PATHINFO_EXTENSION));
@@ -112,20 +110,18 @@ if (isset($_POST['update_project'])) {
             }
         }
     }
-    // Check if total images exceed 5 after adding new ones
+    // Leellenőrzi hogy 5-nél több fájlt ne lehessen feltölteni
     if (count($image_paths_to_keep) > 5) {
         $_SESSION['message'] = 'Legfeljebb 5 kép lehet összesen.';
         header("Location: /project/edit_project.php?id=" . $id);
         exit();
     }
 
-
-    // Combine all paths into a single string for the database
+    // Az összes utat egy stringé alakítja az adatbázisnak
     $final_image_path_string = implode(',', array_filter($image_paths_to_keep));
 
-    // Update the database
+    // Adatbázis frissítése
     $sql = "UPDATE projects SET name=?, pattern=?, yarn=?, hook=?, description=?, image=?, start=?, finish=? WHERE id=?";
-    // Updated to use the new yarn ID and string data
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ssssssssi", $name, $pattern, $yarn_id, $hook, $description, $final_image_path_string, $start, $finish, $id);
 
@@ -138,7 +134,7 @@ if (isset($_POST['update_project'])) {
     $stmt->close();
 }
 
-// Fetch all unique brands for the brand dropdown
+// Az összes márka lekérése a lenyíló menübe
 $brands = [];
 $sql_brands = "SELECT DISTINCT brand FROM yarns ORDER BY brand ASC";
 $result_brands = $conn->query($sql_brands);
@@ -276,24 +272,34 @@ $conn->close();
 
 
     <script>
+        // A kód akkor kezd lefutni ha az oldal teljesen betöltődött
         document.addEventListener('DOMContentLoaded', function() {
             const brandSelect = document.getElementById('brand');
             const varietySelect = document.getElementById('variety');
+
+            //Az aktuális projekthez tartozó márkát kapja meg
             const currentYarnId = <?php echo json_encode($current_yarn_id); ?>;
 
+            // Fonalfajták lekérdezéséért felelős és a legördülő menüpont frissítéséért
             const populateVarieties = (brand, selectedId = null) => {
+                // Alaphelyzetbe állítja  a fajták menüpontot 
                 varietySelect.innerHTML = '<option value=""> <?= lang('Válassz fajtát') ?> </option>';
                 
+                // Ha a brand kiválasztásra került elindul egy lekérés
                 if (brand) {
                     fetch('/project/backend/get_yarn_varieties.php', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded',
                         },
+                        // Belekerül a kiválasztott márka neve
                         body: `brand=${encodeURIComponent(brand)}`
                     })
+                    // A szerver válaszát JSON formátumba alakítja
                     .then(response => response.json())
+                    // Az adatok megérkezésekor feldolgozza a JSON objektumot
                     .then(data => {
+                        // Ha van fajta hozzárendelve a márkához a kód végigmegy rajta és egy option elemet hoz létre mindegyikhez
                         if (data.varieties.length > 0) {
                             data.varieties.forEach(variety => {
                                 const option = document.createElement('option');
@@ -304,6 +310,7 @@ $conn->close();
                                 }
                                 varietySelect.appendChild(option);
                             });
+                            // Sikeres lekérdezés esetén a fajta menüpont engedélyezve lesz
                             varietySelect.disabled = false;
                         } else {
                             varietySelect.disabled = true;
@@ -315,13 +322,13 @@ $conn->close();
                 }
             };
 
-            // Event listener for brand change
+            // Eseményfigyelő, ha a a felhasználó kiválaszt egy márkát elindul a függyvény
             brandSelect.addEventListener('change', function() {
                 const selectedBrand = this.value;
                 populateVarieties(selectedBrand);
             });
 
-            // Initial population on page load
+            // Eredetileg milyen márka van beállítva, az oldal megjelenésekot biztosítja hogy a megfelelő fonalfajta legyen kiválasztva
             const initialBrand = brandSelect.value;
             if (initialBrand) {
                 populateVarieties(initialBrand, currentYarnId);

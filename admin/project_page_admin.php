@@ -20,7 +20,7 @@ if (empty($project_id) || !is_numeric($project_id) || !is_numeric($target_uid)) 
     die("Érvénytelen projekt- vagy felhasználói azonosító megadva.");
 }
 
-// Adatbézisból lekéri a projekt adatait
+// Adatbázisból lekéri a projekt adatait
 $sql = "SELECT p.id, p.name, p.pattern, p.hook, p.description, p.image, p.start, p.finish, y.brand, y.variety FROM projects p LEFT JOIN yarns y ON p.yarn = y.id WHERE p.id = ? AND p.uid = ?";
 $stmt = $conn->prepare($sql);
 

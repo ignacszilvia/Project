@@ -45,13 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // felhasználónév frissítése a sessionben.
             $_SESSION['username'] = $username;
-            //Üzenet elküldése sikeres regisztráció után.
-            $_SESSION['message'] = lang('Sikeres módosítás!');
-
-            // Visszirányít a felhasználói profil oldalra.
-            header("Location: /project/admin/admin_profile.php");
-            // Rögtön lezárja a scripter.
-            exit;
+            $message = lang('Sikeres módosítás!');
         }
         $stmt_check_mail->close();
     }

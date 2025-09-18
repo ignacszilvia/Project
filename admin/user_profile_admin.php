@@ -14,9 +14,6 @@ if (!isset($_SESSION['uid']) || $_SESSION['rights'] != 103) {
 
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $target_uid = intval($_GET['id']);
-} else {
-    // Ha nincs specifikálva melyik uid akkor a bejelentkezett felhasználó uid-a lesz használatban
-    $target_uid = $_SESSION['uid'];
 }
 
 $stmt_get_data = $conn->prepare("SELECT username, mail FROM users WHERE uid = ?");

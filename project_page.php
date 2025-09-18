@@ -17,12 +17,14 @@ if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
 
 $project_id = $_GET['id'];
 
+// Adatbázisból lekéri az adatokat és a két adatbázist összekapcsolja a yarn id alapján
 $stmt = $conn->prepare("SELECT p.id, p.name, p.pattern, p.hook, p.description, p.image, p.start, p.finish, y.brand, y.variety FROM projects p LEFT JOIN yarns y ON p.yarn = y.id WHERE p.id = ? AND p.uid = ?");
                     
 if ($stmt === false) {
     die("Error preparing statement: " . $conn->error);
 }
 
+// Hozzáköti a project id-t és a felhasználó id-t a lekérdezéshez köti hozzá, végrehajtódik, ami a result változóban van eltárolva.
 $stmt->bind_param("ii", $project_id, $_SESSION['uid']);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -60,7 +62,9 @@ $szerkesztes = lang('Szerkesztés');
                 <div class="main_container">
                     <img src="/project/images/yarn2.png" class="image-center">
                     <?php
+                    // Ellenőrzi hogy talált-e projectet
                     if ($result->num_rows > 0) {
+                        // Ha talált akkor a while ciklus fut le és megjeleníti a project adatait
                         while ($row = $result->fetch_assoc()) {
                             echo "<div>";
                             echo "<p style='font-size:2.5em'><b>{$row['name']}</b></p>";
@@ -82,6 +86,7 @@ $szerkesztes = lang('Szerkesztés');
                             echo "</p>";
                             echo "<p><b>$kep</b></p>";
 
+                            // Ha az image nem üres akkor tömbbé alakítja és ezen végigmegy és megjeleníti az össze képet
                             if (!empty($row['image'])) {
                                 $image_paths = explode(',', $row['image']);
                                 foreach ($image_paths as $image_path) {
@@ -105,6 +110,7 @@ $szerkesztes = lang('Szerkesztés');
                         echo "<div style='border: 1px solid rgb(90, 90, 90) text-align=center;'><p colspan='6'>Nincs elérhető adat!</p></div>";
                     }
 
+                    // Adatbázis kapcsolat lezárása
                     $stmt->close();
                     $conn->close();
                     ?>

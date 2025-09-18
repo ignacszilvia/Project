@@ -13,6 +13,7 @@ if (!isset($_SESSION['uid']) || $_SESSION['rights'] != 103) {
 }
 
 $error_message = null;
+$message = null;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -48,12 +49,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt_update->bind_param("si", $new_hashed_password, $uid);
 
         if ($stmt_update->execute()) {
-            // Set a session message and redirect to the profile page.
-            $_SESSION['message'] = lang("Jelszó sikeresen megváltoztatva!");
-            header('Location: /project/admin/admin_profile.php');
-            exit; // Exit after redirection is crucial for security.
+            $message = lang('Sikeres módosítás!');
         } else {
-            // Set a database error message.
             $error_message = lang("Hiba történt a jelszó módosítása közben.");
             error_log("Password change failed for UID: " . $uid . " - " . $conn->error);
         }
@@ -84,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="main_container">
                     <img src="/project/images/yarn2.png" class="image-center">
                     <h2><?= lang('Jelszó módosítása') ?></h2>
-                    <form action="change_password.php" method="post">
+                    <form action="change_password_admin.php" method="post">
                         <div class="loginlabel">
                             <label for="current_password"><?= lang('Jelenlegi jelszó') ?></label><br>
                             <input type="password" id="current_password" class="pass" name="current_password" placeholder="<?= lang('Jelenlegi jelszó') ?>" required><br>
@@ -99,9 +96,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </div>
                         <br>
                         <div>
-                            <?php if (!empty($error_message)): ?>
-                            <p><?= htmlspecialchars($error_message) ?></p>
-                            <?php endif; ?>
+                            <p>                            
+                                <?php
+                                    if (!empty($error_message)) {
+                                        echo htmlspecialchars($error_message);
+                                    }
+
+                                    if (!empty($message)) {
+                                        echo htmlspecialchars($message);
+                                    }
+                                ?>
+                            </p>
                         </div>
                         <div id="showpassword">
                             <input id="checkbox" type="checkbox" onclick="togglePasswordVisibilityPage()">

@@ -11,8 +11,10 @@ if (!isset($_SESSION['uid']) || $_SESSION['rights'] != 103) {
     exit();
 }
 
+// Lekéri a bejelentkezett felhasználó id-át.
 $uid = $_SESSION['uid'];
 
+// Lekéri a bejelentkezett felhasználó adatait.
 $stmt_get_data = $conn->prepare("SELECT username, mail FROM users WHERE uid = ?");
 $stmt_get_data->bind_param("i", $uid);
 $stmt_get_data->execute();

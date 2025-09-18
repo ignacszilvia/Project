@@ -103,7 +103,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 $noprojects = lang('Nincs projekt hozzáadva');
 
-// Az összes sort egy tömbbe ehlyezi el
+// Az összes sort egy tömbbe helyezi el
 $projects = $result->fetch_all(MYSQLI_ASSOC);
 
 $stmt->close();

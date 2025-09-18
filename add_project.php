@@ -14,7 +14,7 @@ if (!isset($_SESSION['uid']) || $_SESSION['rights'] != 101) {
 
 $message = NULL;
 
-// Fetch all unique brands for the brand dropdown
+// Lekérdi az összes márkát az adatbázisból és ezeket eltárolja a brands tömbben
 $brands = [];
 $sql_brands = "SELECT DISTINCT brand FROM yarns ORDER BY brand ASC";
 $result_brands = $conn->query($sql_brands);
@@ -23,7 +23,6 @@ if ($result_brands->num_rows > 0) {
         $brands[] = $b_row['brand'];
     }
 }
-
 
 // Az űrlap elküldésének megkezdése
 if (isset($_POST['submit'])) {
@@ -41,7 +40,7 @@ if (isset($_POST['submit'])) {
     // Itt kezdődik a fájl feltöltés
     // Fájlok leellenőrzése
     if (!empty($_FILES['image']['name'][0])) {
-        // Leellenőrzi hány fájlt próbáltak feltölteni és ha több mint 5 akkor hibát ír ki
+        // Leellenőrzi hogy hány fájlt próbáltak feltölteni és ha több mint 5 akkor hibát ír ki
         if (count($_FILES['image']['name']) > 5) {
             $_SESSION['message'] = 'Legfeljebb 5 kép tölthető fel egyszerre.'; 
             header("Location: /project/add_project.php"); 
@@ -169,6 +168,7 @@ $conn->close();
                                 <div class="yarn_choice">
                                     <label for="variety"><?= lang('Fajta') ?></label>
                                     <br>
+                                    <!--Addig le van tiltva amíg márka nicnsn kiválasztva-->
                                     <select class="yarn_select"id="variety" name="variety" disabled>
                                     <option value=""><?= lang('Válassz fajtát') ?></option>
                                     </select>
@@ -231,23 +231,31 @@ $conn->close();
     ?>
 
     <script>
+        // A kód akkor kezd lefutni ha az oldal teljesen betöltődött
         document.addEventListener('DOMContentLoaded', function() {
             const brandSelect = document.getElementById('brand');
             const varietySelect = document.getElementById('variety');
             
+            // Fonalfajták lekérdezéséért felelős és a legördülő menüpont frissítéséért
             const populateVarieties = (brand) => {
+                // Alaphelyzetbe állítja  a fajták menüpontot 
                 varietySelect.innerHTML = '<option value=""> <?= lang('Válassz fajtát') ?> </option>';
                 
+                // Ha a brand kiválasztásra került elindul egy lekérés
                 if (brand) {
                     fetch('/project/backend/get_yarn_varieties.php', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded',
                         },
+                        // Belekerül a kiválasztott márka neve
                         body: `brand=${encodeURIComponent(brand)}`
                     })
+                    // A szerver válaszát JSON formátumba alakítja
                     .then(response => response.json())
+                    // Az adatok megérkezésekor feldolgozza a JSON objektumot
                     .then(data => {
+                        // Ha van fajta hozzárendelve a márkához a kód végigmegy rajta és egy option elemet hoz létre mindegyikhez
                         if (data.varieties.length > 0) {
                             data.varieties.forEach(variety => {
                                 const option = document.createElement('option');
@@ -255,6 +263,7 @@ $conn->close();
                                 option.textContent = variety.variety;
                                 varietySelect.appendChild(option);
                             });
+                            // Sikeres lekérdezés esetén a fajta menüpont engedélyezve lesz
                             varietySelect.disabled = false;
                         } else {
                             varietySelect.disabled = true;
@@ -265,7 +274,7 @@ $conn->close();
                     varietySelect.disabled = true;
                 }
             };
-            // Event listener for brand change
+            // Eseményfigyelő, ha a a felhasználó kiválaszt egy márkát elindul a függyvény
             brandSelect.addEventListener('change', function() {
                 const selectedBrand = this.value;
                 populateVarieties(selectedBrand);

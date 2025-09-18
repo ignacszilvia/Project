@@ -22,7 +22,7 @@ if ($id === false || $id === null) {
     $message = lang('Érvénytelen felhasználói azonosító!');
 } else {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        // SAdatok leellenőrzése
+        // Adatok leellenőrzése
         $username = htmlspecialchars($_POST['username'], ENT_QUOTES, 'UTF-8');
         $mail = filter_input(INPUT_POST, 'mail', FILTER_VALIDATE_EMAIL);
         $rights = filter_input(INPUT_POST, 'rights', FILTER_VALIDATE_INT);

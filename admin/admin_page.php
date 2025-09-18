@@ -7,7 +7,6 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 require $_SERVER['DOCUMENT_ROOT'] . '/project/backend/config.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/project/backend/lang.php';
 
-// Check for admin rights
 if (!isset($_SESSION['uid']) || $_SESSION['rights'] != 103) {
     header('Location: /project/login.php?error=no_permission');
     exit();
