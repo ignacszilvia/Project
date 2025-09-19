@@ -49,7 +49,7 @@ input {
 }
 
 
-/*CONTAINER CSS*/
+/* CONTAINER CSS */
 
 .login {
   border-radius: 10px;
@@ -146,7 +146,7 @@ input {
 }
 
 
-/*EDIT/ADD PROJECT*/
+/* EDIT/ADD PROJECT */
 
 .yarn_choice {
   display: inline-block;
@@ -350,7 +350,7 @@ input {
 }
 
 
-/*NAVBAR CSS*/
+/* NAVBAR CSS*/
 
 .navbar {
   background-color: rgb(247, 247, 247);

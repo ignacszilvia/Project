@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Aug 30. 09:08
--- Kiszolgáló verziója: 10.4.28-MariaDB
--- PHP verzió: 8.2.4
+-- Host: 127.0.0.1:3306
+-- Generation Time: Sep 19, 2025 at 02:05 PM
+-- Server version: 9.1.0
+-- PHP Version: 8.3.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,74 +18,90 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Adatbázis: `crochetproject`
+-- Database: `crochetproject`
 --
 
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `projects`
+-- Table structure for table `projects`
 --
 
-CREATE TABLE `projects` (
-  `uid` int(11) NOT NULL,
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `pattern` varchar(1000) DEFAULT NULL,
-  `yarn` varchar(255) DEFAULT NULL,
+DROP TABLE IF EXISTS `projects`;
+CREATE TABLE IF NOT EXISTS `projects` (
+  `uid` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_hungarian_ci NOT NULL,
+  `pattern` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_hungarian_ci DEFAULT NULL,
+  `yarn` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_hungarian_ci DEFAULT NULL,
   `hook` decimal(10,0) DEFAULT NULL,
-  `description` varchar(1000) DEFAULT NULL,
-  `image` varchar(255) DEFAULT NULL,
+  `description` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_hungarian_ci DEFAULT NULL,
+  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_hungarian_ci DEFAULT NULL,
   `start` date DEFAULT NULL,
-  `finish` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
+  `finish` date DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `Userid` (`uid`)
+) ENGINE=InnoDB AUTO_INCREMENT=107 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
 
 --
--- A tábla adatainak kiíratása `projects`
+-- Dumping data for table `projects`
 --
 
 INSERT INTO `projects` (`uid`, `id`, `name`, `pattern`, `yarn`, `hook`, `description`, `image`, `start`, `finish`) VALUES
-(4, 95, 'Amigurumi', 'https://amigurumink.hu/', '110', 6, '', '/project/uploads/68b056ab58937_crochet-dinosaur-free-amigurumi-pattern-1-3734250398.jpg,/project/uploads/68b06c4122f23_Cute-Crochet-Duck-Amigurumi-Free-Pattern11-1046517853.jpg', '2025-08-09', NULL),
-(4, 96, 'Amigurumi', 'https://amigurumink.hu/', '134', 6, 'fsdfdsfdsf', '/project/uploads/68b075576f20d_crochet-dinosaur-free-amigurumi-pattern-1-3734250398.jpg,/project/uploads/68b075577116f_Cute-Crochet-Duck-Amigurumi-Free-Pattern11-1046517853.jpg', '2025-08-13', NULL);
+(37, 98, 'Kulacstartó', 'https://www.acrochetedsimplicity.com/crochet-water-bottle-holder-pattern/', '103', 3, '', '/project/uploads/68cd42e14e580_crochet-water-bottle-holder-pattern-2_medium2.jpg,/project/uploads/68cd42e14e769_crochet-water-bottle-holder-pattern-featured_medium2.jpg,/project/uploads/68cd42e14e8bb_IMG_8320_medium2.jpeg', '2025-09-08', '2025-09-12'),
+(37, 99, 'Rókás kulcstartó', 'https://www.etsy.com/listing/906400220/crochet-pattern-fox-keychain-ornament?ref=shop_home_active_7&amp;amp;crt=1', '85', 5, 'Ez a minta nagyon gyorsan elkészült és könnyen érthető volt. A róka kulcstartó pedig olyan aranyos lett!', '/project/uploads/68cd443c4ac00_acp_medium2.jpg,/project/uploads/68cd443c4adcd_acp2_medium2.jpg,/project/uploads/68cd443c4af5f_acp3_medium2.jpg', '2025-09-23', '2025-09-23'),
+(37, 100, 'Csillagtakaró', 'https://bettymcknit.com/patterns/6daystarblanket/', '78', 6, 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.\r\n\r\n\r\nLorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.\r\n\r\nLorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. ', '', '2025-07-09', NULL),
+(37, 101, 'Hatszögű kardigán', 'https://www.youtube.com/watch?v=EBKYLkmOaHE', '75', 4, '', '/project/uploads/68cd5bfc60d86_20220313_075857-01_medium2.jpeg', '2025-09-01', '2025-09-30'),
+(37, 102, 'Téli sapka', 'https://brianakdesigns.com/snowy-puff-crochet-hat-pattern/', '163', 4, 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.', '/project/uploads/68cd5c724cd56_IMG_2166_medium2.JPG,/project/uploads/68cd5c724e2e5_IMG_2318_medium2.JPG', '2025-07-14', '2025-08-31'),
+(38, 103, 'Edényfogó', 'https://www.bevscountrycottage.com/kitchen-potholders.html', '146', 4, 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id curs', '/project/uploads/68cd611b36488_2025-potholder_-_1_medium2.jpeg,/project/uploads/68cd611b37f18_2025-potholder_-_2_medium2.jpeg', '2025-09-08', '2025-09-11'),
+(38, 104, 'Szőnyeg', 'https://stitchesnscraps.com/free-pattern-linen-stitch-scrap-rug/', '45', 3, 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.', '/project/uploads/68cd61d5aeab4_IMG_2202_medium2.jpeg,/project/uploads/68cd61d5aedf7_IMG_2203_medium2.jpeg,/project/uploads/68cd61d5aefd7_IMG_2204.jpeg,/project/uploads/68cd61d5af168_IMG_2205_medium2.jpeg', '2025-09-22', '2025-10-05'),
+(38, 105, 'Bevásárló szatyor', 'https://kamecrochet.com/2019/07/19/sakura-market-bag/', '167', 4, '', '', '2025-09-08', NULL),
+(38, 106, 'Lufi kutya', 'https://www.ravelry.com/patterns/library/balloon-dog-9', '64', 6, 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.', '/project/uploads/68cd62c81db1d_20220825_125448_medium2.jpg,/project/uploads/68cd62c81dd16_20220825_125458_medium2.jpg', '2025-09-08', '2025-09-09');
 
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `users`
+-- Table structure for table `users`
 --
 
-CREATE TABLE `users` (
-  `uid` int(11) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `mail` varchar(255) NOT NULL,
-  `pass` varchar(255) NOT NULL,
-  `regdatetime` datetime DEFAULT current_timestamp(),
-  `rights` int(11) DEFAULT 101
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `uid` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_hungarian_ci NOT NULL,
+  `mail` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_hungarian_ci NOT NULL,
+  `pass` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_hungarian_ci NOT NULL,
+  `regdatetime` datetime DEFAULT CURRENT_TIMESTAMP,
+  `rights` int DEFAULT '101',
+  PRIMARY KEY (`uid`),
+  UNIQUE KEY `mail` (`mail`)
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
 
 --
--- A tábla adatainak kiíratása `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`uid`, `username`, `mail`, `pass`, `regdatetime`, `rights`) VALUES
-(4, '12345678', '1234@1234.hu', '$2y$10$6hWCaZD.zfz03SKtFkDdaOQ8S/I22TAYaE1OwpYwLHnrfIxQlJ9u6', '2025-08-14 14:55:24', 101),
-(11, 'ignacszilvia', 'ignac.szilvia@outlook.com', '$2y$10$jVe/78YmQ0tXLFAn.4k1U.L.oa.gMsmwQ4IyDPeWIjzvyIK30DF7q', '2025-08-19 14:22:11', 103),
-(34, 'ignac.szilvia', 'ignac.szilvia@gmail.com', '$2y$10$yQtUnY7k5zC5yTyBp/bRNONNmxYpA8vIJZLBY/YF3Vrullh8YTAOu', '2025-08-27 10:56:32', 101);
+(11, 'ignac.szilvia', 'ignac.szilvia@outlook.com', '$2y$10$uV2HP5zWYTdn/3zecWaDPekGtxDKsXNSdnxYZdwaMlKfzKSOuvFYe', '2025-08-19 14:22:11', 103),
+(37, 'ignacszilvia', 'ignac.szilvia@gmail.com', '$2y$10$/RDBWJEN1Ts4HUaGKqMK2.EpEC5Rt.PkycHXcxaghJs2hs4Azzxjm', '2025-09-19 12:48:23', 101),
+(38, 'horgolas', 'horgol@gmail.com', '$2y$10$WtYZCAw0M0ivOyNmX8q3W.AKeTPsx8sV6rAIHU11lphodKO3HrnSK', '2025-09-19 12:49:25', 101),
+(39, '12345678', '1234@1234.hu', '$2y$10$PVvyJ0IzUs5RN8hUg079Ue8CUsM.2yxXRuJ1OX8h6ruUyKJ8fgjti', '2025-09-19 12:52:06', 0);
 
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `yarns`
+-- Table structure for table `yarns`
 --
 
-CREATE TABLE `yarns` (
-  `id` int(11) NOT NULL,
-  `brand` set('Drops','Alize','DMC','Kartopu','Nako','Wolans','Yarnart','Himalaya','Schachenmayr','Scheepjes','Lana Grossa','Vlna-Hep','Gründl','Red Heart','Malabrigo') DEFAULT NULL,
-  `variety` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
+DROP TABLE IF EXISTS `yarns`;
+CREATE TABLE IF NOT EXISTS `yarns` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `brand` set('Drops','Alize','DMC','Kartopu','Nako','Wolans','Yarnart','Himalaya','Schachenmayr','Scheepjes','Lana Grossa','Vlna-Hep','Gründl','Red Heart','Malabrigo','Lion Brand','Bernat','Adriafil','Berroco','Blue Sky Fibers','Caron','Cascade','Debbie Bliss','Deramores','Dream in Color','Ella Rae','Hayfield','Hoooked','James C. Brett','Juniper Moon Farm','King Cole','Knit Collage','Koigu','Lang Yarns','Lopi','McIntosh','MillaMia','Noro','Paintbox','Patons','Plymouth','Sirdar','Snuggly',' Stylecraft','Tahki','The Yarn Collective','Trendsetter','Universal','Valley','Viking Of Norway','West Yorkshire Spinners','Willow and Lark','Wool and the Gang','Yarn and Colors','Hobbii Yarn','Yarnspirations','KnitPicks','Darn Good Yarn','We Are Knitters','Gorgeous Alpacas','Papillon','Gombolyda','Urth','FibraNatura') CHARACTER SET utf8mb4 COLLATE utf8mb4_hungarian_ci DEFAULT NULL,
+  `variety` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_hungarian_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=168 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
 
 --
--- A tábla adatainak kiíratása `yarns`
+-- Dumping data for table `yarns`
 --
 
 INSERT INTO `yarns` (`id`, `brand`, `variety`) VALUES
@@ -245,53 +261,11 @@ INSERT INTO `yarns` (`id`, `brand`, `variety`) VALUES
 (155, 'Malabrigo', 'Lace'),
 (156, 'Malabrigo', 'Silkpaca'),
 (157, 'Malabrigo', 'Worsted'),
-(158, 'Malabrigo', 'Rios');
-
---
--- Indexek a kiírt táblákhoz
---
-
---
--- A tábla indexei `projects`
---
-ALTER TABLE `projects`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `Userid` (`uid`);
-
---
--- A tábla indexei `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`uid`),
-  ADD UNIQUE KEY `mail` (`mail`);
-
---
--- A tábla indexei `yarns`
---
-ALTER TABLE `yarns`
-  ADD PRIMARY KEY (`id`);
-
---
--- A kiírt táblák AUTO_INCREMENT értéke
---
-
---
--- AUTO_INCREMENT a táblához `projects`
---
-ALTER TABLE `projects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
-
---
--- AUTO_INCREMENT a táblához `users`
---
-ALTER TABLE `users`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
-
---
--- AUTO_INCREMENT a táblához `yarns`
---
-ALTER TABLE `yarns`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=159;
+(158, 'Malabrigo', 'Rios'),
+(160, 'Drops', 'Bomull-Lin'),
+(163, 'Lion Brand', 'Cotton Hemp'),
+(166, 'Bernat', 'Blanket'),
+(167, 'Paintbox', 'Cotton DK');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
