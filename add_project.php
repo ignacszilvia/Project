@@ -125,6 +125,7 @@ $conn->close();
     ?>
 
     <script src="/project/scripts/sidebar_toggle.js"></script>
+
 </head>
 <body>
     <div class="page_container">
@@ -168,7 +169,7 @@ $conn->close();
                                 <div class="yarn_choice">
                                     <label for="variety"><?= lang('Fajta') ?></label>
                                     <br>
-                                    <!--Addig le van tiltva amíg márka nicnsn kiválasztva-->
+                                    <!--Addig le van tiltva amíg márka nincs kiválasztva-->
                                     <select class="yarn_select"id="variety" name="variety" disabled>
                                     <option value=""><?= lang('Válassz fajtát') ?></option>
                                     </select>
@@ -185,13 +186,22 @@ $conn->close();
                             <div class="loginlabel">
                                 <label for="description"><?= lang('Leírás') ?></label>
                                 <br>
-                                <textarea class="textarea"  placeholder="<?= lang('Leírás') ?>" id="description" name="description"></textarea>
+                                <textarea class="textarea"  placeholder="<?= lang('Leírás') ?>" id="description" name="description" maxlength="2000"></textarea>
                             </div>
+
+                            <div>
+                                <p class="counter">
+                                    <span id="charCount">0</span>/2000
+                                </p>
+                            </div>
+
+                            <script src="/project/scripts/character_counter.js"></script>
+
 
                             <div class="loginlabel">
                                 <label for="image"><?= lang('Kép') ?></label>
                                 <br>
-                                <p style="font-size: 12px;"><?= lang('Csak 5 kép feltöltése lehetséges.') ?></p>
+                                <p class="min-number"><?= lang('Csak 5 kép feltöltése lehetséges.') ?></p>
                                 <input type="file" placeholder="<?= lang('Kép') ?>" id="image" class="fileupload" name="image[]" multiple>
                             </div>
 

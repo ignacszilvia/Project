@@ -218,13 +218,22 @@ $conn->close();
                             <div class="loginlabel">
                                 <label for="description"><?= lang('Leírás') ?></label>
                                 <br>
-                                <textarea class="textarea" id="description" name="description"><?php echo htmlspecialchars($row['description']); ?></textarea>
+                                <textarea class="textarea" id="description" name="description" maxlength="2000"><?php echo htmlspecialchars($row['description']); ?></textarea>
                             </div>
+
+                            <div>
+                                <p class="counter">
+                                    <span id="charCount">0</span>/2000
+                                </p>
+                            </div>
+
+                            <script src="/project/scripts/character_counter.js"></script>
+
 
                             <div class="loginlabel">
                                 <label for="image"><?= lang('Kép') ?></label>
                                 <br>
-                                <p style="font-size: 12px;"><?= lang('Csak 5 kép feltöltése lehetséges.') ?></p>
+                                <p class="min-number"><?= lang('Csak 5 kép feltöltése lehetséges.') ?></p>
                                 <div id="existing-images-container" style="display: flex; flex-wrap: wrap;">
                                     <?php foreach ($existing_image_paths as $image_path):
                                         $trimmed_path = trim($image_path);

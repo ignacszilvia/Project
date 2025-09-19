@@ -49,7 +49,7 @@ input {
 }
 
 
-/* CONTAINER CSS */
+/* CONTAINER */
 
 .login {
   border-radius: 10px;
@@ -175,8 +175,16 @@ input {
   height: 200px;
 }
 
+.counter {  
+  color: rgb(107, 107, 107);
+}
 
-/* PROJECT PAGE */
+.min-number {
+  font-size: 12px;
+}
+
+
+/* PROJECT */
 
 .projects-grid {
   display: flex;
@@ -259,7 +267,7 @@ input {
 }
 
 
-/*DIVIDER CSS*/
+/* DIVIDER */
 
 .image-center {
   margin-top: 20px;
@@ -277,7 +285,7 @@ input {
 }
 
 
-/*BUTTON CSS*/
+/* BUTTON */
 
 .button, .button_inverse, .button-search, .button-link{
   font-size: small;
@@ -350,7 +358,7 @@ input {
 }
 
 
-/* NAVBAR CSS*/
+/* NAVBAR */
 
 .navbar {
   background-color: rgb(247, 247, 247);
@@ -427,7 +435,7 @@ input {
 }
 
 
-/*TABLE CSS*/
+/* TABLE */
 
 table {
   margin: auto;
@@ -454,7 +462,7 @@ td {
 }
 
 
-/*LANGUAGE MENU CSS*/
+/* LANGUAGE MENU */
 
 .rightnav {
   display: flex;
@@ -551,7 +559,7 @@ td {
 }
 
 
-/*SIDEBAR CSS*/
+/* SIDEBAR */
 
 .sidebar {
   margin: 100px 15px 0 15px;
@@ -621,7 +629,7 @@ td {
 }
 
 
-/*FOOTER CSS*/
+/* FOOTER */
 
 footer {
   width: 100%; 
@@ -643,7 +651,7 @@ footer {
 }
 
 
-/*HOME PAGE*/
+/* HOME PAGE */
 
 .p-small {
   font-size: 1em;
@@ -670,7 +678,7 @@ footer {
   display: block;
 }
 
-/*TEXT EFFECT 1*/
+/* TEXT EFFECT 1 */
 
 :root {
 	--sac: 'Monoton', cursive;
@@ -718,7 +726,7 @@ footer {
 }
 
 
-/*TEXT EFFECT 2*/
+/* TEXT EFFECT 2 */
 
 .title-word {
   animation: color-animation 4s linear infinite;
@@ -772,7 +780,7 @@ footer {
 }
 
 
-/*TEXT EFFECT 3*/
+/* TEXT EFFECT 3 */
 
 .waviy {
   position: relative;
@@ -799,7 +807,7 @@ footer {
 
 
 
-/*SITE CONTENT CSS*/
+/* SITE CONTENT */
 
 .content_link {
   color: #a15d78;
@@ -829,7 +837,7 @@ footer {
 }
 
 
-/*SHOW PASSWORD CSS*/
+/* SHOW PASSWORD */
 
 #checkbox {
   width: 20px;
@@ -845,7 +853,7 @@ footer {
 }
 
 
-/*SELECT ADMIN CSS*/
+/* SELECT ADMIN */
 
 .select_rights {
   border: 2px solid rgb(184, 167, 209);
@@ -861,7 +869,7 @@ footer {
 }
 
 
-/*PROFILE LABELS*/
+/* PROFILE LABELS */
 
 .label {
   font-size: 1.1em;
@@ -869,7 +877,7 @@ footer {
 }
 
 
-/*FILE UPLOAD*/
+/* FILE UPLOAD */
 
 .fileupload {
   border: none;

@@ -83,7 +83,7 @@ $vissza = lang('Vissza');
                         <p style='text-align: center;'>
                             <b><?= $leiras ?></b>
                             <br>
-                            <p style='text-align:justify; text-justify: inter-word; width: 80%; margin: 0 auto;'><?= htmlspecialchars($project_data['description']) ?></p>
+                            <p style='text-align:justify; text-justify: inter-word; width: 80%; margin: 0 auto; white-space: pre-wrap;'><?= htmlspecialchars($project_data['description']) ?></p>
                         </p>
 
                         <p><b><?= $kep ?></b></p>

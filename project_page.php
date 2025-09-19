@@ -82,7 +82,7 @@ $szerkesztes = lang('Szerkesztés');
                             echo "<p style='text-align: center; '>";
                             echo "<b>$leiras</b>";
                             echo "<br>";
-                            echo "<p style='text-align:justify; text-justify: inter-word; width: 80%; margin: 0 auto;'>{$row['description']}</p>";
+                            echo "<p style='text-align:justify; text-justify: inter-word; width: 80%; margin: 0 auto; white-space: pre-wrap;'>{$row['description']}</p>";
                             echo "</p>";
                             echo "<p><b>$kep</b></p>";
 
