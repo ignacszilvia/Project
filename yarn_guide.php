@@ -20,11 +20,10 @@ if (!isset($_SESSION['uid']) || ($_SESSION['rights'] != 101 && $_SESSION['rights
     include $_SERVER['DOCUMENT_ROOT'] . '/project/frontend/header.php';
     ?>
 
-    <script src="/project/"></script>
+    <script src="/project/scripts/sidebar_toggle.js"></script>
     <script src="/project/scripts/sort_table.js"></script>
     <script src="/project/scripts/yarn_table_fetch.js"></script>
-    <script src="/project/scripts/sidebar_toggle.js"></script>
-
+    
 </head>
 <body onload="loadYarnTable()">
     <div class="page_container">
@@ -40,13 +39,18 @@ if (!isset($_SESSION['uid']) || ($_SESSION['rights'] != 101 && $_SESSION['rights
                 <div class="main_container">
                     <img src="/project/images/yarn2.png" class="image-center">
                     
-                    <h2><?= lang('Fonaladatbázis') ?></h2>
+                    <h2><?= lang('Fonalismertető') ?></h2>
+                    
+                    <h3 class="choose-a-brand"><?= lang('Válassz egy márkát') ?></h3>
 
-                    <a href="/project/add_yarn.php" class="button-link"><?= lang('Fonal hozzáadása') ?></a>
+                    <div class="yarn-guide-brands">
+                        <a href="/project/yarnguide/drops.php" target="yarn-guide-page">Drops</a>
+                        <a href="/project/yarnguide/alize.php" target="yarn-guide-page">Alize</a>
+                    </div>
 
-                    <br><br><br>
-
-                    <div id="yarns-table"></div>
+                    <iframe name="yarn-guide-page" class="yarn-iframe" src="/project/yarnguide/default.php">
+                        
+                    </iframe>
 
                     <img src="/project/images/yarn2flipped.png" class="image-center">
                 </div>

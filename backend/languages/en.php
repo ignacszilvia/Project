@@ -80,7 +80,17 @@ $lang = [
     'Adatbázis kapcsolat megszakadt.'=>'Database connection failed.',
     'Kérjük töltsd ki az összes mezőt.'=>'Please fill in all fields.',
     'Biztosan ki akarod törölni?'=>'Are you sure you want to delete this?',
-    
+    'Fonalismertető'=>'Yarnguide',
+    'Válassz egy márkát'=>'Choose a brand',
+
+
+    'gyapjú'=>'wool',
+    'alpaka'=>'alpaca',
+    'poliamid'=>'polyamide',
+    'pamut'=>'cotton',
+    'viszkóz'=>'viscose',
+    'len'=>'linen',
+
 
     'Az Ön fiókja tiltva van.'=>'Your account is banned.',
     'Hibás e-mail vagy jelszó!'=>'Wrong e-mail or password!',
@@ -168,6 +178,8 @@ $lang = [
 
     'Hogyan léphetek kapcsolatba az ügyfélszolgálattal?'=>'How can I contact support?',
     'Ha bármilyen kérdésed van vagy segítségre van szükséged, elérsz bennünket a gildedhook@gmail.com e-mail címen keresztül.'=>'If you have any questions or need help, you can reach us via email at gildedhook@gmail.com.',
+
+    'A Drops fonalat a Garnstudio, egy norvég cég gyártja, amely több mint 30 éve készít kiváló minőségű fonalakat. Ismert a fenntarthatóság és a kézművesség iránti elkötelezettségéről, a Drops fonalak széles választékát kínálja, amelyek különböző projektekhez alkalmasak, a puha és könnyű fonalaktól a vastagabb, melegebb opciókig.'=>'Drops yarn is made by Garnstudio, a Norwegian company that has been producing high-quality yarn for over 30 years. Known for its commitment to sustainability and craftsmanship, Drops offers an extensive range of yarns that cater to different types of projects, from soft and lightweight yarns to heavier, cozier options.',
 
 
 ];

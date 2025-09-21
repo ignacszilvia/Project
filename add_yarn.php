@@ -5,8 +5,8 @@ if (session_status() === PHP_SESSION_NONE) {
 require $_SERVER['DOCUMENT_ROOT'] . '/project/backend/config.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/project/backend/lang.php';
 
-if (!isset($_SESSION['uid']) || $_SESSION['rights'] != 101) {
-    header('Location: /project/login.php?error=no_permission');
+if (!isset($_SESSION['uid']) || ($_SESSION['rights'] != 101 && $_SESSION['rights'] != 103)) {
+    header('Location: /project/index.php');
     exit();
 }
 
@@ -70,7 +70,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <main class="page_content">
             <div class="main_body">
                 <?php
-                include $_SERVER['DOCUMENT_ROOT'] . '/project/frontend/sidebar.php';
+                if (!isset($_SESSION['uid']) || $_SESSION['rights'] != 103) {
+                    include $_SERVER['DOCUMENT_ROOT'] . '/project/frontend/sidebar.php';
+                } else if (!isset($_SESSION['uid']) || $_SESSION['rights'] != 101) {
+                    include $_SERVER['DOCUMENT_ROOT'] . '/project/frontend/sidebar_admin.php';
+                }
                 ?>
                 <div class="main_container">
                     <img src="/project/images/yarn2.png" class="image-center">

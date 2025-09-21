@@ -16,7 +16,7 @@ body {
 }
 
 h2 {
-  margin-top: 10;
+  margin-top: 10px;
   letter-spacing: 7px;
   text-transform: uppercase;
   font-size: 2em;
@@ -188,11 +188,10 @@ input {
 
 .projects-grid {
   display: flex;
-  flex-wrap: wrap; /* Allows items to wrap to the next line */
-  gap: 20px; /* Provides space between project items */
-  justify-content: center; /* Centers the projects horizontally */
-  align-items: flex-start; /* Aligns items at the start of the container */
-  padding: 20px;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .project.item {
@@ -935,6 +934,7 @@ footer {
   text-align: left;
 }
 
+
 /* ADD YARN */
 
 .yarn_add {
@@ -955,4 +955,40 @@ footer {
 
 .new_brand {
   display: inline-block;
+}
+
+
+/* YARNGUIDE */
+
+.yarn-guide-brands a {
+  color: rgb(75, 75, 75);
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+.yarn-guide-brands a:hover {
+  color: #a15d78;
+}
+
+.yarn-guide-brands a:active {
+  color: #796992;
+}
+
+.yarn-iframe {
+  width: 98%;
+  height: 500px;
+  border: none;
+  font-family: 'League Spartan';
+  padding: 10px;
+}
+
+.choose-a-brand {
+  margin: 30px 0px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-align: center;
+  color: #a15d78;
 }

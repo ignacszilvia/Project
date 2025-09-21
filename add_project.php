@@ -14,7 +14,7 @@ if (!isset($_SESSION['uid']) || $_SESSION['rights'] != 101) {
 
 $message = NULL;
 
-// Lekérdi az összes márkát az adatbázisból és ezeket eltárolja a brands tömbben
+// Lekérdezi az összes márkát az adatbázisból és ezeket eltárolja a brands tömbben
 $brands = [];
 $sql_brands = "SELECT DISTINCT brand FROM yarns ORDER BY brand ASC";
 $result_brands = $conn->query($sql_brands);
