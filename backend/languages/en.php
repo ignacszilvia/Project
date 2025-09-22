@@ -82,6 +82,10 @@ $lang = [
     'Biztosan ki akarod törölni?'=>'Are you sure you want to delete this?',
     'Fonalismertető'=>'Yarnguide',
     'Válassz egy márkát'=>'Choose a brand',
+    'Összetétel'=>'Content',
+    'Fonalcsoport'=>'Yarn Group',
+    'Ajánlott tűméret'=>'Recommended needle size',
+    'Weboldal'=>'Website',
 
 
     'gyapjú'=>'wool',
@@ -90,6 +94,10 @@ $lang = [
     'pamut'=>'cotton',
     'viszkóz'=>'viscose',
     'len'=>'linen',
+    'cupro'=>'cupro',
+    'bambusz'=>'bamboo',
+    'akril'=>'acrylic',
+    'poliészter'=>'polyester',
 
 
     'Az Ön fiókja tiltva van.'=>'Your account is banned.',
@@ -180,6 +188,9 @@ $lang = [
     'Ha bármilyen kérdésed van vagy segítségre van szükséged, elérsz bennünket a gildedhook@gmail.com e-mail címen keresztül.'=>'If you have any questions or need help, you can reach us via email at gildedhook@gmail.com.',
 
     'A Drops fonalat a Garnstudio, egy norvég cég gyártja, amely több mint 30 éve készít kiváló minőségű fonalakat. Ismert a fenntarthatóság és a kézművesség iránti elkötelezettségéről, a Drops fonalak széles választékát kínálja, amelyek különböző projektekhez alkalmasak, a puha és könnyű fonalaktól a vastagabb, melegebb opciókig.'=>'Drops yarn is made by Garnstudio, a Norwegian company that has been producing high-quality yarn for over 30 years. Known for its commitment to sustainability and craftsmanship, Drops offers an extensive range of yarns that cater to different types of projects, from soft and lightweight yarns to heavier, cozier options.',
+
+    'Alize 1984 óta gyárt és kínál fonal-kollekciók széles választékát az Oeko-Tex szabványoknak megfelelően. Minden kollekciójukat a saját, teljesen integrált és legújabb technológiával felszerelt üzemükben állítják elő.'=>'Alize has been producing and offering a wide variety of unique and exclusive hand knitting yarn collections according to Oeko-Tex standartssince 1984. All of their collections are being produced in their fully integrated and the latest technology facility.',
+
 
 
 ];

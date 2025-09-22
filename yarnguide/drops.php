@@ -30,8 +30,8 @@ if (!isset($_SESSION['uid']) || ($_SESSION['rights'] != 101 && $_SESSION['rights
             <b><?= lang('Összetétel') ?></b>: 65% <?= lang('alpaka') ?>, 28%<?= lang('poliamid')?>, 7% <?= lang('gyapjú') ?>
             <br>
             <b><?= lang('Fonalcsoport') ?></b>: C
-            <b><br>
-            <?= lang('Ajánlott tűméret') ?></b>: 5mm
+            <br>
+            <b><?= lang('Ajánlott tűméret') ?></b>: 5mm
         </p>
     </div>
     <div>
@@ -41,8 +41,8 @@ if (!isset($_SESSION['uid']) || ($_SESSION['rights'] != 101 && $_SESSION['rights
             <b><?= lang('Összetétel') ?></b>: 100% <?= lang('gyapjú') ?>
             <br>
             <b><?= lang('Fonalcsoport') ?></b>: C
-            <b><br>
-            <?= lang('Ajánlott tűméret') ?></b>: 5mm
+            <br>
+            <b><?= lang('Ajánlott tűméret') ?></b>: 5mm
         </p>
     </div>
 
@@ -53,8 +53,8 @@ if (!isset($_SESSION['uid']) || ($_SESSION['rights'] != 101 && $_SESSION['rights
             <b><?= lang('Összetétel') ?></b>: 100% <?= lang('alpaka') ?>
             <br>
             <b><?= lang('Fonalcsoport') ?></b>: A
-            <b><br>
-            <?= lang('Ajánlott tűméret') ?></b>: 2,5 - 3,5mm
+            <br>
+            <b><?= lang('Ajánlott tűméret') ?></b>: 2,5 - 3,5mm
         </p>
     </div>	
 
@@ -65,8 +65,8 @@ if (!isset($_SESSION['uid']) || ($_SESSION['rights'] != 101 && $_SESSION['rights
             <b><?= lang('Összetétel') ?></b>: 65% <?= lang('gyapjú') ?>, 35% <?= lang('alpaka') ?>
             <br>
             <b><?= lang('Fonalcsoport') ?></b>: E
-            <b><br>
-            <?= lang('Ajánlott tűméret') ?></b>: 9mm
+            <br>
+            <b><?= lang('Ajánlott tűméret') ?></b>: 9mm
         </p>
     </div>	
 
@@ -77,8 +77,8 @@ if (!isset($_SESSION['uid']) || ($_SESSION['rights'] != 101 && $_SESSION['rights
             <b><?= lang('Összetétel') ?></b>: 100% <?= lang('gyapjú') ?>
             <br>
             <b><?= lang('Fonalcsoport') ?></b>: A
-            <b><br>
-            <?= lang('Ajánlott tűméret') ?></b>: 3mm
+            <br>
+            <b><?= lang('Ajánlott tűméret') ?></b>: 3mm
         </p>
     </div>	
 
@@ -89,8 +89,8 @@ if (!isset($_SESSION['uid']) || ($_SESSION['rights'] != 101 && $_SESSION['rights
             <b><?= lang('Összetétel') ?></b>: 50% <?= lang('pamut') ?>, 33% <?= lang('viszkóz') ?>, 14% <?= lang('len') ?>
             <br>
             <b><?= lang('Fonalcsoport') ?></b>: B
-            <b><br>
-            <?= lang('Ajánlott tűméret') ?></b>: 4mm
+            <br>
+            <b><?= lang('Ajánlott tűméret') ?></b>: 4mm
         </p>
     </div>	
 
@@ -101,8 +101,8 @@ if (!isset($_SESSION['uid']) || ($_SESSION['rights'] != 101 && $_SESSION['rights
             <b><?= lang('Összetétel') ?></b>: 100% <?= lang('gyapjú') ?>
             <br>
             <b><?= lang('Fonalcsoport') ?></b>: C
-            <b><br>
-            <?= lang('Ajánlott tűméret') ?></b>: 5mm
+            <br>
+            <b><?= lang('Ajánlott tűméret') ?></b>: 5mm
         </p>
     </div>	
 
@@ -113,8 +113,8 @@ if (!isset($_SESSION['uid']) || ($_SESSION['rights'] != 101 && $_SESSION['rights
             <b><?= lang('Összetétel') ?></b>: 50% <?= lang('pamut') ?>, 50% <?= lang('poliészter') ?>
             <br>
             <b><?= lang('Fonalcsoport') ?></b>: B
-            <b><br>
-            <?= lang('Ajánlott tűméret') ?></b>: 4mm
+            <br>
+            <b><?= lang('Ajánlott tűméret') ?></b>: 4mm
         </p>
     </div>	
 
@@ -125,8 +125,8 @@ if (!isset($_SESSION['uid']) || ($_SESSION['rights'] != 101 && $_SESSION['rights
             <b><?= lang('Összetétel') ?></b>: 50% <?= lang('gyapjú') ?>, 50% <?= lang('pamut') ?>
             <br>
             <b><?= lang('Fonalcsoport') ?></b>: B
-            <b><br>
-            <?= lang('Ajánlott tűméret') ?></b>: 4mm
+            <br>
+            <b><?= lang('Ajánlott tűméret') ?></b>: 4mm
         </p>
     </div>	
 
@@ -137,8 +137,8 @@ if (!isset($_SESSION['uid']) || ($_SESSION['rights'] != 101 && $_SESSION['rights
             <b><?= lang('Összetétel') ?></b>: 100% <?= lang('gyapjú') ?>
             <br>
             <b><?= lang('Fonalcsoport') ?></b>: B
-            <b><br>
-            <?= lang('Ajánlott tűméret') ?></b>: 4mm
+            <br>
+            <b><?= lang('Ajánlott tűméret') ?></b>: 4mm
         </p>
     </div>	
 
@@ -149,8 +149,8 @@ if (!isset($_SESSION['uid']) || ($_SESSION['rights'] != 101 && $_SESSION['rights
             <b><?= lang('Összetétel') ?></b>: 75% <?= lang('gyapjú') ?>, 25% <?= lang('poliamid') ?>
             <br>
             <b><?= lang('Fonalcsoport') ?></b>: A
-            <b><br>
-            <?= lang('Ajánlott tűméret') ?></b>: 3mm
+            <br>
+            <b><?= lang('Ajánlott tűméret') ?></b>: 3mm
         </p>
     </div>	
 
@@ -161,8 +161,8 @@ if (!isset($_SESSION['uid']) || ($_SESSION['rights'] != 101 && $_SESSION['rights
             <b><?= lang('Összetétel') ?></b>: 75% <?= lang('gyapjú') ?>, 25% <?= lang('poliamid') ?>
             <br>
             <b><?= lang('Fonalcsoport') ?></b>: B
-            <b><br>
-            <?= lang('Ajánlott tűméret') ?></b>: 4mm
+            <br>
+            <b><?= lang('Ajánlott tűméret') ?></b>: 4mm
         </p>
     </div>	
 
@@ -173,20 +173,175 @@ if (!isset($_SESSION['uid']) || ($_SESSION['rights'] != 101 && $_SESSION['rights
             <b><?= lang('Összetétel') ?></b>: 65% <?= lang('gyapjú') ?>, 35% <?= lang('alpaka') ?>
             <br>
             <b><?= lang('Fonalcsoport') ?></b>: A
-            <b><br>
-            <?= lang('Ajánlott tűméret') ?></b>: 3mm
+            <br>
+            <b><?= lang('Ajánlott tűméret') ?></b>: 3mm
         </p>
     </div>	
 
     <div>
-        <h3></h3>
+        <h3>Glitter</h3>
         <p>
-            <img src="" width="150px">
-            <b><?= lang('Összetétel') ?></b>: <?= lang('') ?>
+            <img src="/project/images/yarns/drops-glitter.jpg" width="150px">
+            <b><?= lang('Összetétel') ?></b>: 60% <?= lang('cupro') ?>, 40% <?= lang('fém') ?>
             <br>
-            <b><?= lang('Fonalcsoport') ?></b>: 
-            <b><br>
-            <?= lang('Ajánlott tűméret') ?></b>: 
+            <b><?= lang('Fonalcsoport') ?></b>: -
+            <br>
+            <b><?= lang('Ajánlott tűméret') ?></b>: -
+        </p>
+    </div>	
+
+    <div>
+        <h3>Karisma</h3>
+        <p>
+            <img src="/project/images/yarns/drops-karisma.jpg" width="150px">
+            <b><?= lang('Összetétel') ?></b>: 100% <?= lang('gyapjú') ?>
+            <br>
+            <b><?= lang('Fonalcsoport') ?></b>: B
+            <br>
+            <b><?= lang('Ajánlott tűméret') ?></b>: 4mm 
+        </p>
+    </div>	
+
+    <div>
+        <h3>Lima</h3>
+        <p>
+            <img src="/project/images/yarns/drops-lima.jpg" width="150px">
+            <b><?= lang('Összetétel') ?></b>: 65% <?= lang('gyapjú') ?>, 35% <?= lang('alpaka') ?>
+            <br>
+            <b><?= lang('Fonalcsoport') ?></b>: B
+            <br>
+            <b><?= lang('Ajánlott tűméret') ?></b>: 4mm
+        </p>
+    </div>	
+
+    <div>
+        <h3>Melody</h3>
+        <p>
+            <img src="/project/images/yarns/drops-melody.jpg" width="150px">
+            <b><?= lang('Összetétel') ?></b>: 71% <?= lang('alpaka') ?>, 25% <?= lang('gyapjú') ?>, 4% <?= lang('poliamid') ?>
+            <br>
+            <b><?= lang('Fonalcsoport') ?></b>: D
+            <br>
+            <b><?= lang('Ajánlott tűméret') ?></b>: 8mm
+        </p>
+    </div>	
+
+    <div>
+        <h3>Muskat</h3>
+        <p>
+            <img src="/project/images/yarns/drops-muskat.jpg" width="150px">
+            <b><?= lang('Összetétel') ?></b>: 100% <?= lang('pamut') ?>
+            <br>
+            <b><?= lang('Fonalcsoport') ?></b>: B
+            <br>
+            <b><?= lang('Ajánlott tűméret') ?></b>: 4mm
+        </p>
+    </div>	
+
+    <div>
+        <h3>Nepal</h3>
+        <p>
+            <img src="/project/images/yarns/drops-nepal.jpg" width="150px">
+            <b><?= lang('Összetétel') ?></b>: 60% <?= lang('gyapjú') ?>, 35% <?= lang('alpaka') ?>
+            <br>
+            <b><?= lang('Fonalcsoport') ?></b>: C
+            <br>
+            <b><?= lang('Ajánlott tűméret') ?></b>: 5mm
+        </p>
+    </div>	
+
+    <div>
+        <h3>Nord</h3>
+        <p>
+            <img src="/project/images/yarns/drops-nord.jpg" width="150px">
+            <b><?= lang('Összetétel') ?></b>: 45% <?= lang('alpaka') ?>, 30% <?= lang('poliamid') ?>, 25% <?= lang('gyapjú') ?>
+            <br>
+            <b><?= lang('Fonalcsoport') ?></b>: A
+            <br>
+            <b><?= lang('Ajánlott tűméret') ?></b>: 3mm
+        </p>
+    </div>	
+
+    <div>
+        <h3>Paris</h3>
+        <p>
+            <img src="/project/images/yarns/drops-paris.jpg" width="150px">
+            <b><?= lang('Összetétel') ?></b>: 100% <?= lang('pamut') ?>
+            <br>
+            <b><?= lang('Fonalcsoport') ?></b>: C
+            <br>
+            <b><?= lang('Ajánlott tűméret') ?></b>: 5mm
+        </p>
+    </div>	
+
+    <div>
+        <h3>Polaris</h3>
+        <p>
+            <img src="/project/images/yarns/drops-polaris.jpg" width="150px">
+            <b><?= lang('Összetétel') ?></b>: 100% <?= lang('gyapjú') ?>
+            <br>
+            <b><?= lang('Fonalcsoport') ?></b>: F
+            <br>
+            <b><?= lang('Ajánlott tűméret') ?></b>: 12mm
+        </p>
+    </div>	
+
+    <div>
+        <h3>Puna</h3>
+        <p>
+            <img src="/project/images/yarns/drops-puna.jpg" width="150px">
+            <b><?= lang('Összetétel') ?></b>: 100% <?= lang('alpaka') ?>
+            <br>
+            <b><?= lang('Fonalcsoport') ?></b>: B
+            <br>
+            <b><?= lang('Ajánlott tűméret') ?></b>: 4mm
+        </p>
+    </div>	
+        <div>
+        <h3>Safran</h3>
+        <p>
+            <img src="/project/images/yarns/drops-safran.jpg" width="150px">
+            <b><?= lang('Összetétel') ?></b>: 100% <?= lang('pamut') ?>
+            <br>
+            <b><?= lang('Fonalcsoport') ?></b>: A
+            <br>
+            <b><?= lang('Ajánlott tűméret') ?></b>: 3mm
+        </p>
+    </div>	
+
+    <div>
+        <h3>Sky</h3>
+        <p>
+            <img src="/project/images/yarns/drops-sky.jpg" width="150px">
+            <b><?= lang('Összetétel') ?></b>: 74% <?= lang('alpaka') ?>, 18% <?= lang('poliamid') ?>, 8% <?= lang('gyapjú') ?>
+            <br>
+            <b><?= lang('Fonalcsoport') ?></b>: B
+            <br>
+            <b><?= lang('Ajánlott tűméret') ?></b>: 4mm
+        </p>
+    </div>	
+
+    <div>
+        <h3>Snow</h3>
+        <p>
+            <img src="/project/images/yarns/drops-snow.jpg" width="150px">
+            <b><?= lang('Összetétel') ?></b>: 100% <?= lang('gyapjú') ?>
+            <br>
+            <b><?= lang('Fonalcsoport') ?></b>: E
+            <br>
+            <b><?= lang('Ajánlott tűméret') ?></b>: 8mm
+        </p>
+    </div>	
+    
+    <div>
+        <h3>Soft Tweed</h3>
+        <p>
+            <img src="/project/images/yarns/drops-soft-tweed.jpg" width="150px">
+            <b><?= lang('Összetétel') ?></b>: 50% <?= lang('gyapjú') ?>, 25% <?= lang('alpaka') ?>, 25% <?= lang('viszkóz') ?>
+            <br>
+            <b><?= lang('Fonalcsoport') ?></b>: B
+            <br>
+            <b><?= lang('Ajánlott tűméret') ?></b>: 4mm
         </p>
     </div>	
 

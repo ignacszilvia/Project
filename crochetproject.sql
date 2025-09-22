@@ -136,7 +136,6 @@ INSERT INTO `yarns` (`id`, `brand`, `variety`) VALUES
 (29, 'Alize', 'Puffy'),
 (30, 'Alize', 'Velluto'),
 (31, 'Alize', 'Diva'),
-(32, 'Alize', 'Softy'),
 (33, 'Alize', 'Baby Best'),
 (34, 'DMC', 'Happy Cotton'),
 (35, 'DMC', 'ECO Vita'),
