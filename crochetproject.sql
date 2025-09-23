@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Sep 19, 2025 at 03:27 PM
+-- Generation Time: Sep 23, 2025 at 11:10 AM
 -- Server version: 9.1.0
 -- PHP Version: 8.3.14
 
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `projects` (
   `pattern` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_hungarian_ci DEFAULT NULL,
   `yarn` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_hungarian_ci DEFAULT NULL,
   `hook` decimal(10,0) DEFAULT NULL,
-  `description` varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_hungarian_ci DEFAULT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_hungarian_ci,
   `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_hungarian_ci DEFAULT NULL,
   `start` date DEFAULT NULL,
   `finish` date DEFAULT NULL,
